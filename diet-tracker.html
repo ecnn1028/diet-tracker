@@ -1,0 +1,462 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>饮食记录 - 增肌减脂追踪</title>
+<style>
+  * { margin: 0; padding: 0; box-sizing: border-box; }
+  
+  :root {
+    --bg: #f5f5f7;
+    --card: #ffffff;
+    --text: #1d1d1f;
+    --text-secondary: #6e6e73;
+    --border: #e5e5ea;
+    --accent: #0071e3;
+    --green: #34c759;
+    --orange: #ff9f0a;
+    --red: #ff3b30;
+    --purple: #af52de;
+  }
+  
+  @media (prefers-color-scheme: dark) {
+    :root {
+      --bg: #1d1d1f;
+      --card: #2c2c2e;
+      --text: #f5f5f7;
+      --text-secondary: #98989d;
+      --border: #3a3a3c;
+      --accent: #0a84ff;
+      --green: #30d158;
+      --orange: #ffd60a;
+      --red: #ff453a;
+      --purple: #bf5af2;
+    }
+  }
+  
+  body {
+    font-family: -apple-system, BlinkMacSystemFont, "SF Pro Text", "Helvetica Neue", sans-serif;
+    background: var(--bg);
+    color: var(--text);
+    line-height: 1.6;
+    padding: 16px;
+    max-width: 800px;
+    margin: 0 auto;
+    -webkit-font-smoothing: antialiased;
+  }
+  
+  h1 {
+    font-size: 22px;
+    font-weight: 700;
+    margin-bottom: 4px;
+    letter-spacing: -0.3px;
+  }
+  
+  .subtitle {
+    font-size: 13px;
+    color: var(--text-secondary);
+    margin-bottom: 24px;
+  }
+  
+  .info-card {
+    background: var(--card);
+    border-radius: 16px;
+    padding: 16px;
+    margin-bottom: 20px;
+    border: 0.5px solid var(--border);
+  }
+  
+  .info-grid {
+    display: grid;
+    grid-template-columns: repeat(2, 1fr);
+    gap: 12px;
+  }
+  
+  .info-item {
+    display: flex;
+    flex-direction: column;
+  }
+  
+  .info-label {
+    font-size: 11px;
+    color: var(--text-secondary);
+    text-transform: uppercase;
+    letter-spacing: 0.5px;
+    margin-bottom: 2px;
+  }
+  
+  .info-value {
+    font-size: 15px;
+    font-weight: 600;
+    color: var(--accent);
+  }
+  
+  .day-card {
+    background: var(--card);
+    border-radius: 16px;
+    padding: 16px;
+    margin-bottom: 16px;
+    border: 0.5px solid var(--border);
+  }
+  
+  .day-header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-bottom: 12px;
+    padding-bottom: 10px;
+    border-bottom: 0.5px solid var(--border);
+  }
+  
+  .day-title {
+    font-size: 16px;
+    font-weight: 700;
+  }
+  
+  .day-summary {
+    display: flex;
+    gap: 12px;
+    flex-wrap: wrap;
+  }
+  
+  .badge {
+    font-size: 11px;
+    font-weight: 600;
+    padding: 3px 8px;
+    border-radius: 6px;
+  }
+  
+  .badge-green { background: rgba(52,199,89,0.15); color: var(--green); }
+  .badge-orange { background: rgba(255,159,10,0.15); color: var(--orange); }
+  .badge-red { background: rgba(255,59,48,0.15); color: var(--red); }
+  .badge-purple { background: rgba(175,82,222,0.15); color: var(--purple); }
+  
+  .meal-section {
+    margin-top: 12px;
+  }
+  
+  .meal-title {
+    font-size: 13px;
+    font-weight: 600;
+    color: var(--text-secondary);
+    margin-bottom: 6px;
+    display: flex;
+    align-items: center;
+    gap: 6px;
+  }
+  
+  .meal-title::before {
+    content: '';
+    width: 3px;
+    height: 14px;
+    border-radius: 2px;
+    background: var(--accent);
+    display: inline-block;
+  }
+  
+  table {
+    width: 100%;
+    border-collapse: collapse;
+    font-size: 13px;
+    margin-bottom: 4px;
+  }
+  
+  th {
+    text-align: left;
+    font-weight: 500;
+    color: var(--text-secondary);
+    font-size: 11px;
+    text-transform: uppercase;
+    letter-spacing: 0.3px;
+    padding: 6px 8px;
+    border-bottom: 0.5px solid var(--border);
+  }
+  
+  td {
+    padding: 6px 8px;
+    border-bottom: 0.5px solid var(--border);
+  }
+  
+  tr:last-child td { border-bottom: none; }
+  
+  .subtotal {
+    font-size: 12px;
+    color: var(--accent);
+    font-weight: 600;
+    margin-top: 4px;
+    margin-bottom: 8px;
+  }
+  
+  .day-total {
+    background: rgba(0,113,227,0.06);
+    border-radius: 10px;
+    padding: 12px;
+    margin-top: 12px;
+  }
+  
+  .total-row {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    font-size: 13px;
+    margin-bottom: 4px;
+  }
+  
+  .total-label { color: var(--text-secondary); }
+  
+  .total-value { font-weight: 600; }
+  
+  .analysis {
+    margin-top: 8px;
+    font-size: 12px;
+    color: var(--text-secondary);
+    line-height: 1.5;
+  }
+  
+  .dot { display: inline-block; width: 6px; height: 6px; border-radius: 50%; margin-right: 4px; vertical-align: middle; }
+  .dot-green { background: var(--green); }
+  .dot-orange { background: var(--orange); }
+  .dot-red { background: var(--red); }
+  
+  .summary-table-wrapper {
+    overflow-x: auto;
+    -webkit-overflow-scrolling: touch;
+    margin-top: 20px;
+  }
+  
+  .summary-table {
+    min-width: 500px;
+  }
+  
+  .summary-table th {
+    background: rgba(0,113,227,0.06);
+    font-weight: 600;
+  }
+  
+  .summary-table td {
+    font-size: 13px;
+  }
+  
+  @media (max-width: 480px) {
+    body { padding: 12px; }
+    h1 { font-size: 20px; }
+    .info-grid { grid-template-columns: 1fr 1fr; gap: 8px; }
+    .day-header { flex-direction: column; align-items: flex-start; gap: 8px; }
+    .day-summary { gap: 8px; }
+    table { font-size: 12px; }
+    th, td { padding: 5px 6px; }
+  }
+  
+  .food-emoji {
+    font-style: normal;
+    margin-right: 4px;
+  }
+</style>
+</head>
+<body>
+
+<h1>🍽️ 饮食记录</h1>
+<p class="subtitle">增肌减脂追踪 · 2026年5月</p>
+
+<div class="info-card">
+  <div class="info-grid">
+    <div class="info-item">
+      <span class="info-label">年龄 / 性别</span>
+      <span class="info-value">28岁 · 女</span>
+    </div>
+    <div class="info-item">
+      <span class="info-label">身高 / 体重</span>
+      <span class="info-value">163cm · 55kg</span>
+    </div>
+    <div class="info-item">
+      <span class="info-label">蛋白质目标</span>
+      <span class="info-value" style="color: var(--purple);">66g / 天</span>
+    </div>
+    <div class="info-item">
+      <span class="info-label">热量目标</span>
+      <span class="info-value" style="color: var(--orange);">1500-1700 kcal</span>
+    </div>
+  </div>
+</div>
+
+<!-- 2026-05-09 -->
+<div class="day-card">
+  <div class="day-header">
+    <span class="day-title">5月9日 周六</span>
+    <div class="day-summary">
+      <span class="badge badge-red">蛋白质 139%</span>
+      <span class="badge badge-green">热量 略低</span>
+    </div>
+  </div>
+
+  <div class="meal-section">
+    <div class="meal-title">早餐</div>
+    <table>
+      <tr><th>食物</th><th>分量</th><th>蛋白</th><th>热量</th></tr>
+      <tr><td>无糖酸奶</td><td>200g</td><td>6g</td><td>120</td></tr>
+      <tr><td>4.0蛋白牛奶</td><td>50ml</td><td>2g</td><td>33</td></tr>
+    </table>
+    <div class="subtotal">小计：蛋白质 8g · 热量 153kcal</div>
+  </div>
+
+  <div class="meal-section">
+    <div class="meal-title">午餐</div>
+    <table>
+      <tr><th>食物</th><th>分量</th><th>蛋白</th><th>热量</th></tr>
+      <tr><td>海南鸡饭</td><td>1份</td><td>42g</td><td>558</td></tr>
+      <tr><td>胡萝卜炖猪骨汤</td><td>1碗</td><td>5g</td><td>80</td></tr>
+    </table>
+    <div class="subtotal">小计：蛋白质 47g · 热量 638kcal</div>
+  </div>
+
+  <div class="meal-section">
+    <div class="meal-title">下午茶</div>
+    <table>
+      <tr><th>食物</th><th>分量</th><th>蛋白</th><th>热量</th></tr>
+      <tr><td>4.0蛋白牛奶</td><td>180ml</td><td>7g</td><td>117</td></tr>
+      <tr><td>无糖熟普洱茶</td><td>550ml</td><td>0g</td><td>0</td></tr>
+    </table>
+    <div class="subtotal">小计：蛋白质 7g · 热量 117kcal</div>
+  </div>
+
+  <div class="meal-section">
+    <div class="meal-title">晚餐</div>
+    <table>
+      <tr><th>食物</th><th>分量</th><th>蛋白</th><th>热量</th></tr>
+      <tr><td>麦当劳不素之霸堡（去酱）</td><td>1个</td><td>30g</td><td>450</td></tr>
+    </table>
+    <div class="subtotal">小计：蛋白质 30g · 热量 450kcal</div>
+  </div>
+
+  <div class="day-total">
+    <div class="total-row">
+      <span class="total-label">总蛋白质</span>
+      <span class="total-value" style="color: var(--red);">92g / 66g（超标 139%）</span>
+    </div>
+    <div class="total-row">
+      <span class="total-label">总热量</span>
+      <span class="total-value" style="color: var(--green);">1358kcal / 1500-1700（略低）</span>
+    </div>
+    <div class="analysis">
+      <span class="dot dot-red"></span>蛋白质超标（海南鸡饭+不素之霸堡）<br>
+      <span class="dot dot-green"></span>热量控制不错，接近目标下限
+    </div>
+  </div>
+</div>
+
+<!-- 2026-05-08 -->
+<div class="day-card">
+  <div class="day-header">
+    <span class="day-title">5月8日 周五</span>
+    <div class="day-summary">
+      <span class="badge badge-red">蛋白质 150%</span>
+      <span class="badge badge-red">热量 超标</span>
+    </div>
+  </div>
+
+  <div class="meal-section">
+    <div class="meal-title">早餐</div>
+    <table>
+      <tr><th>食物</th><th>分量</th><th>蛋白</th><th>热量</th></tr>
+      <tr><td>酸奶</td><td>200g</td><td>6g</td><td>120</td></tr>
+      <tr><td>牛奶</td><td>100g</td><td>3g</td><td>65</td></tr>
+    </table>
+    <div class="subtotal">小计：蛋白质 9g · 热量 185kcal</div>
+  </div>
+
+  <div class="meal-section">
+    <div class="meal-title">午餐</div>
+    <table>
+      <tr><th>食物</th><th>分量</th><th>蛋白</th><th>热量</th></tr>
+      <tr><td>KPRO 黑椒牛肉烤蔬菜谷物能量碗</td><td>1份</td><td>36g</td><td>554</td></tr>
+    </table>
+    <div class="subtotal">小计：蛋白质 36g · 热量 554kcal</div>
+  </div>
+
+  <div class="meal-section">
+    <div class="meal-title">下午茶</div>
+    <table>
+      <tr><th>食物</th><th>分量</th><th>蛋白</th><th>热量</th></tr>
+      <tr><td>4.0蛋白牛奶</td><td>180ml</td><td>7g</td><td>117</td></tr>
+      <tr><td>无糖普洱茶</td><td>550ml</td><td>0g</td><td>0</td></tr>
+    </table>
+    <div class="subtotal">小计：蛋白质 7g · 热量 117kcal</div>
+  </div>
+
+  <div class="meal-section">
+    <div class="meal-title">晚餐</div>
+    <table>
+      <tr><th>食物</th><th>分量</th><th>蛋白</th><th>热量</th></tr>
+      <tr><td>麦当劳板烧鸡腿堡（去酱）</td><td>1个</td><td>25g</td><td>430</td></tr>
+      <tr><td>藕粉</td><td>1碗</td><td>0g</td><td>105</td></tr>
+      <tr><td>牛奶（冲藕粉）</td><td>100ml</td><td>3g</td><td>65</td></tr>
+      <tr><td>西瓜</td><td>1/8个</td><td>2g</td><td>188</td></tr>
+      <tr><td>山姆金枪鱼饼干</td><td>2包</td><td>10g</td><td>340</td></tr>
+    </table>
+    <div class="subtotal">小计：蛋白质 40g · 热量 1128kcal</div>
+  </div>
+
+  <div class="meal-section">
+    <div class="meal-title">加餐</div>
+    <table>
+      <tr><th>食物</th><th>分量</th><th>蛋白</th><th>热量</th></tr>
+      <tr><td>桂圆红枣蛋糕</td><td>~125g</td><td>7g</td><td>482</td></tr>
+    </table>
+    <div class="subtotal">小计：蛋白质 7g · 热量 482kcal</div>
+  </div>
+
+  <div class="day-total">
+    <div class="total-row">
+      <span class="total-label">总蛋白质</span>
+      <span class="total-value" style="color: var(--red);">99g / 66g（超标 150%）</span>
+    </div>
+    <div class="total-row">
+      <span class="total-label">总热量</span>
+      <span class="total-value" style="color: var(--red);">2466kcal / 1500-1700（超标 766kcal）</span>
+    </div>
+    <div class="analysis">
+      <span class="dot dot-red"></span>桂圆红枣蛋糕热量密度高，可减量<br>
+      <span class="dot dot-red"></span>饼干类零食热量累积较快
+    </div>
+  </div>
+</div>
+
+<!-- 每日汇总表 -->
+<div class="info-card">
+  <div class="meal-title">每日汇总</div>
+  <div class="summary-table-wrapper">
+    <table class="summary-table">
+      <tr>
+        <th>日期</th><th>蛋白质</th><th>状态</th><th>热量</th><th>状态</th>
+      </tr>
+      <tr>
+        <td>5/6 周三</td>
+        <td>124g</td><td><span class="badge badge-red">188%</span></td>
+        <td>2257</td><td><span class="badge badge-red">超标</span></td>
+      </tr>
+      <tr>
+        <td>5/7 周四</td>
+        <td>100.7g</td><td><span class="badge badge-red">153%</span></td>
+        <td>2051</td><td><span class="badge badge-red">超标</span></td>
+      </tr>
+      <tr>
+        <td>5/8 周五</td>
+        <td>99g</td><td><span class="badge badge-red">150%</span></td>
+        <td>2466</td><td><span class="badge badge-red">超标</span></td>
+      </tr>
+      <tr style="background: rgba(0,113,227,0.04);">
+        <td><strong>5/9 周六</strong></td>
+        <td><strong>92g</strong></td><td><span class="badge badge-red">139%</span></td>
+        <td><strong>1358</strong></td><td><span class="badge badge-green">略低</span></td>
+      </tr>
+    </table>
+  </div>
+</div>
+
+<p style="text-align: center; font-size: 11px; color: var(--text-secondary); margin-top: 24px; margin-bottom: 16px;">
+  数据自动估算 · 每天告诉我吃了什么，我会帮你更新 ✨
+</p>
+
+</body>
+</html>
