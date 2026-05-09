@@ -5,7 +5,7 @@
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <title>饮食记录 - 增肌减脂追踪</title>
 <style>
-  * { margin: 0; padding: 0; box-sizing: border-box; }
+  * { margin:0; padding:0; box-sizing: border-box; }
   
   :root {
     --bg: #f5f5f7;
@@ -56,9 +56,116 @@
   .subtitle {
     font-size: 13px;
     color: var(--text-secondary);
-    margin-bottom: 24px;
+    margin-bottom: 20px;
   }
   
+  /* Date Picker */
+  .date-picker-card {
+    background: var(--card);
+    border-radius: 16px;
+    padding: 16px;
+    margin-bottom: 20px;
+    border: 0.5px solid var(--border);
+  }
+  
+  .date-picker-inner {
+    display: flex;
+    align-items: center;
+    gap: 12px;
+    flex-wrap: wrap;
+  }
+  
+  .date-nav-btn {
+    width: 36px;
+    height: 36px;
+    border-radius: 50%;
+    border: 1.5px solid var(--accent);
+    background: transparent;
+    color: var(--accent);
+    font-size: 18px;
+    cursor: pointer;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    transition: all 0.2s;
+    flex-shrink: 0;
+  }
+  
+  .date-nav-btn:hover {
+    background: var(--accent);
+    color: #fff;
+  }
+  
+  .date-display {
+    flex: 1;
+    min-width: 200px;
+    text-align: center;
+  }
+  
+  .date-display h2 {
+    font-size: 20px;
+    font-weight: 700;
+    margin-bottom: 2px;
+  }
+  
+  .date-display .weekday {
+    font-size: 13px;
+    color: var(--text-secondary);
+  }
+  
+  .date-input-wrapper {
+    position: relative;
+  }
+  
+  .date-input {
+    padding: 8px 12px;
+    border-radius: 8px;
+    border: 1.5px solid var(--border);
+    background: var(--bg);
+    color: var(--text);
+    font-size: 14px;
+    font-family: inherit;
+    cursor: pointer;
+    width: 100%;
+  }
+  
+  .date-input::-webkit-calendar-picker-indicator {
+    cursor: pointer;
+    filter: var(--icon-filter, none);
+  }
+  
+  @media (prefers-color-scheme: dark) {
+    .date-input::-webkit-calendar-picker-indicator {
+      filter: invert(1);
+    }
+  }
+  
+  .date-quick-btns {
+    display: flex;
+    gap: 8px;
+    flex-wrap: wrap;
+    margin-top: 12px;
+  }
+  
+  .quick-btn {
+    padding: 6px 14px;
+    border-radius: 20px;
+    border: 1px solid var(--border);
+    background: transparent;
+    color: var(--text-secondary);
+    font-size: 13px;
+    cursor: pointer;
+    transition: all 0.2s;
+    font-family: inherit;
+  }
+  
+  .quick-btn:hover, .quick-btn.active {
+    background: var(--accent);
+    color: #fff;
+    border-color: var(--accent);
+  }
+  
+  /* Info Card */
   .info-card {
     background: var(--card);
     border-radius: 16px;
@@ -92,12 +199,24 @@
     color: var(--accent);
   }
   
+  /* Day Card */
   .day-card {
     background: var(--card);
     border-radius: 16px;
     padding: 16px;
     margin-bottom: 16px;
     border: 0.5px solid var(--border);
+    display: none;
+  }
+  
+  .day-card.active {
+    display: block;
+    animation: fadeIn 0.3s ease;
+  }
+  
+  @keyframes fadeIn {
+    from { opacity: 0; transform: translateY(8px); }
+    to { opacity: 1; transform: translateY(0); }
   }
   
   .day-header {
@@ -116,7 +235,7 @@
   
   .day-summary {
     display: flex;
-    gap: 12px;
+    gap: 8px;
     flex-wrap: wrap;
   }
   
@@ -219,6 +338,7 @@
   .dot-orange { background: var(--orange); }
   .dot-red { background: var(--red); }
   
+  /* Summary Table */
   .summary-table-wrapper {
     overflow-x: auto;
     -webkit-overflow-scrolling: touch;
@@ -227,6 +347,7 @@
   
   .summary-table {
     min-width: 500px;
+    width: 100%;
   }
   
   .summary-table th {
@@ -238,28 +359,59 @@
     font-size: 13px;
   }
   
+  .no-data {
+    text-align: center;
+    padding: 40px 20px;
+    color: var(--text-secondary);
+    font-size: 14px;
+  }
+  
+  .no-data-icon {
+    font-size: 40px;
+    margin-bottom: 8px;
+  }
+  
   @media (max-width: 480px) {
     body { padding: 12px; }
     h1 { font-size: 20px; }
-    .info-grid { grid-template-columns: 1fr 1fr; gap: 8px; }
+    .info-grid { grid-template-columns: 1fr; gap: 8px; }
     .day-header { flex-direction: column; align-items: flex-start; gap: 8px; }
     .day-summary { gap: 8px; }
     table { font-size: 12px; }
     th, td { padding: 5px 6px; }
-  }
-  
-  .food-emoji {
-    font-style: normal;
-    margin-right: 4px;
+    .date-picker-inner { justify-content: center; }
   }
 </style>
 </head>
 <body>
 
-<h1>🍽️ 饮食记录</h1>
-<p class="subtitle">增肌减脂追踪 · 2026年5月</p>
+<h1>饮食记录</h1>
+<p class="subtitle">增肌减脂追踪</p>
 
-<div class="info-card">
+<!-- Date Picker -->
+<div class="date-picker-card">
+  <div class="date-picker-inner">
+    <button class="date-nav-btn" onclick="changeDate(-1)" title="前一天">‹</button>
+    <div class="date-display">
+      <h2 id="current-date-text">5月9日 周六</h2>
+      <div class="weekday" id="current-weekday">2026年5月9日</div>
+    </div>
+    <button class="date-nav-btn" onclick="changeDate(1)" title="后一天">›</button>
+  </div>
+  <div style="margin-top: 12px;">
+    <input type="date" class="date-input" id="date-picker" onchange="goToDate(this.value)" />
+  </div>
+  <div class="date-quick-btns">
+    <button class="quick-btn" onclick="goToDate('2026-05-06')">5/6 周三</button>
+    <button class="quick-btn" onclick="goToDate('2026-05-07')">5/7 周四</button>
+    <button class="quick-btn" onclick="goToDate('2026-05-08')">5/8 周五</button>
+    <button class="quick-btn active" onclick="goToDate('2026-05-09')">5/9 周六</button>
+    <button class="quick-btn" onclick="goToToday()">今天</button>
+  </div>
+</div>
+
+<!-- Personal Info (collapsible on mobile) -->
+<div class="info-card" id="info-card">
   <div class="info-grid">
     <div class="info-item">
       <span class="info-label">年龄 / 性别</span>
@@ -280,183 +432,318 @@
   </div>
 </div>
 
-<!-- 2026-05-09 -->
-<div class="day-card">
-  <div class="day-header">
-    <span class="day-title">5月9日 周六</span>
-    <div class="day-summary">
-      <span class="badge badge-red">蛋白质 139%</span>
-      <span class="badge badge-green">热量 略低</span>
+<!-- Day Detail Cards -->
+<div id="day-cards-container">
+
+  <!-- 2026-05-09 -->
+  <div class="day-card active" data-date="2026-05-09">
+    <div class="day-header">
+      <span class="day-title">5月9日 周六</span>
+      <div class="day-summary">
+        <span class="badge badge-red">蛋白质 139%</span>
+        <span class="badge badge-green">热量 略低</span>
+      </div>
+    </div>
+    <div class="meal-section">
+      <div class="meal-title">早餐</div>
+      <table><tr><th>食物</th><th>分量</th><th>蛋白(g)</th><th>热量</th></tr>
+        <tr><td>无糖酸奶</td><td>200g</td><td>6</td><td>120</td></tr>
+        <tr><td>4.0蛋白牛奶</td><td>50ml</td><td>2</td><td>33</td></tr>
+      </table>
+      <div class="subtotal">小计：蛋白质 8g · 热量 153kcal</div>
+    </div>
+    <div class="meal-section">
+      <div class="meal-title">午餐</div>
+      <table><tr><th>食物</th><th>分量</th><th>蛋白(g)</th><th>热量</th></tr>
+        <tr><td>海南鸡饭</td><td>1份</td><td>42</td><td>558</td></tr>
+        <tr><td>胡萝卜炖猪骨汤</td><td>1碗</td><td>5</td><td>80</td></tr>
+      </table>
+      <div class="subtotal">小计：蛋白质 47g · 热量 638kcal</div>
+    </div>
+    <div class="meal-section">
+      <div class="meal-title">下午茶</div>
+      <table><tr><th>食物</th><th>分量</th><th>蛋白(g)</th><th>热量</th></tr>
+        <tr><td>4.0蛋白牛奶</td><td>180ml</td><td>7</td><td>117</td></tr>
+        <tr><td>无糖熟普洱茶</td><td>550ml</td><td>0</td><td>0</td></tr>
+      </table>
+      <div class="subtotal">小计：蛋白质 7g · 热量 117kcal</div>
+    </div>
+    <div class="meal-section">
+      <div class="meal-title">晚餐</div>
+      <table><tr><th>食物</th><th>分量</th><th>蛋白(g)</th><th>热量</th></tr>
+        <tr><td>麦当劳不素之霸堡（去酱）</td><td>1个</td><td>30</td><td>450</td></tr>
+      </table>
+      <div class="subtotal">小计：蛋白质 30g · 热量 450kcal</div>
+    </div>
+    <div class="day-total">
+      <div class="total-row"><span class="total-label">总蛋白质</span><span class="total-value" style="color:var(--red);">92g / 66g（超标139%）</span></div>
+      <div class="total-row"><span class="total-label">总热量</span><span class="total-value" style="color:var(--green);">1358kcal / 1500-1700（略低）</span></div>
+      <div class="analysis"><span class="dot dot-red"></span>蛋白质超标（海南鸡饭+不素之霸堡）<br><span class="dot dot-green"></span>热量控制不错，接近目标下限</div>
     </div>
   </div>
 
-  <div class="meal-section">
-    <div class="meal-title">早餐</div>
-    <table>
-      <tr><th>食物</th><th>分量</th><th>蛋白</th><th>热量</th></tr>
-      <tr><td>无糖酸奶</td><td>200g</td><td>6g</td><td>120</td></tr>
-      <tr><td>4.0蛋白牛奶</td><td>50ml</td><td>2g</td><td>33</td></tr>
-    </table>
-    <div class="subtotal">小计：蛋白质 8g · 热量 153kcal</div>
-  </div>
-
-  <div class="meal-section">
-    <div class="meal-title">午餐</div>
-    <table>
-      <tr><th>食物</th><th>分量</th><th>蛋白</th><th>热量</th></tr>
-      <tr><td>海南鸡饭</td><td>1份</td><td>42g</td><td>558</td></tr>
-      <tr><td>胡萝卜炖猪骨汤</td><td>1碗</td><td>5g</td><td>80</td></tr>
-    </table>
-    <div class="subtotal">小计：蛋白质 47g · 热量 638kcal</div>
-  </div>
-
-  <div class="meal-section">
-    <div class="meal-title">下午茶</div>
-    <table>
-      <tr><th>食物</th><th>分量</th><th>蛋白</th><th>热量</th></tr>
-      <tr><td>4.0蛋白牛奶</td><td>180ml</td><td>7g</td><td>117</td></tr>
-      <tr><td>无糖熟普洱茶</td><td>550ml</td><td>0g</td><td>0</td></tr>
-    </table>
-    <div class="subtotal">小计：蛋白质 7g · 热量 117kcal</div>
-  </div>
-
-  <div class="meal-section">
-    <div class="meal-title">晚餐</div>
-    <table>
-      <tr><th>食物</th><th>分量</th><th>蛋白</th><th>热量</th></tr>
-      <tr><td>麦当劳不素之霸堡（去酱）</td><td>1个</td><td>30g</td><td>450</td></tr>
-    </table>
-    <div class="subtotal">小计：蛋白质 30g · 热量 450kcal</div>
-  </div>
-
-  <div class="day-total">
-    <div class="total-row">
-      <span class="total-label">总蛋白质</span>
-      <span class="total-value" style="color: var(--red);">92g / 66g（超标 139%）</span>
+  <!-- 2026-05-08 -->
+  <div class="day-card" data-date="2026-05-08">
+    <div class="day-header">
+      <span class="day-title">5月8日 周五</span>
+      <div class="day-summary">
+        <span class="badge badge-red">蛋白质 150%</span>
+        <span class="badge badge-red">热量 超标</span>
+      </div>
     </div>
-    <div class="total-row">
-      <span class="total-label">总热量</span>
-      <span class="total-value" style="color: var(--green);">1358kcal / 1500-1700（略低）</span>
+    <div class="meal-section">
+      <div class="meal-title">早餐</div>
+      <table><tr><th>食物</th><th>分量</th><th>蛋白(g)</th><th>热量</th></tr>
+        <tr><td>酸奶</td><td>200g</td><td>6</td><td>120</td></tr>
+        <tr><td>牛奶</td><td>100g</td><td>3</td><td>65</td></tr>
+      </table>
+      <div class="subtotal">小计：蛋白质 9g · 热量 185kcal</div>
     </div>
-    <div class="analysis">
-      <span class="dot dot-red"></span>蛋白质超标（海南鸡饭+不素之霸堡）<br>
-      <span class="dot dot-green"></span>热量控制不错，接近目标下限
+    <div class="meal-section">
+      <div class="meal-title">午餐</div>
+      <table><tr><th>食物</th><th>分量</th><th>蛋白(g)</th><th>热量</th></tr>
+        <tr><td>KPRO 黑椒牛肉烤蔬菜谷物能量碗</td><td>1份</td><td>36</td><td>554</td></tr>
+      </table>
+      <div class="subtotal">小计：蛋白质 36g · 热量 554kcal</div>
+    </div>
+    <div class="meal-section">
+      <div class="meal-title">下午茶</div>
+      <table><tr><th>食物</th><th>分量</th><th>蛋白(g)</th><th>热量</th></tr>
+        <tr><td>4.0蛋白牛奶</td><td>180ml</td><td>7</td><td>117</td></tr>
+        <tr><td>无糖普洱茶</td><td>550ml</td><td>0</td><td>0</td></tr>
+      </table>
+      <div class="subtotal">小计：蛋白质 7g · 热量 117kcal</div>
+    </div>
+    <div class="meal-section">
+      <div class="meal-title">晚餐</div>
+      <table><tr><th>食物</th><th>分量</th><th>蛋白(g)</th><th>热量</th></tr>
+        <tr><td>麦当劳板烧鸡腿堡（去酱）</td><td>1个</td><td>25</td><td>430</td></tr>
+        <tr><td>藕粉</td><td>1碗</td><td>0</td><td>105</td></tr>
+        <tr><td>牛奶（冲藕粉）</td><td>100ml</td><td>3</td><td>65</td></tr>
+        <tr><td>西瓜</td><td>1/8个</td><td>2</td><td>188</td></tr>
+        <tr><td>山姆金枪鱼饼干</td><td>2包</td><td>10</td><td>340</td></tr>
+      </table>
+      <div class="subtotal">小计：蛋白质 40g · 热量 1128kcal</div>
+    </div>
+    <div class="meal-section">
+      <div class="meal-title">加餐</div>
+      <table><tr><th>食物</th><th>分量</th><th>蛋白(g)</th><th>热量</th></tr>
+        <tr><td>桂圆红枣蛋糕</td><td>~125g</td><td>7</td><td>482</td></tr>
+      </table>
+      <div class="subtotal">小计：蛋白质 7g · 热量 482kcal</div>
+    </div>
+    <div class="day-total">
+      <div class="total-row"><span class="total-label">总蛋白质</span><span class="total-value" style="color:var(--red);">99g / 66g（超标150%）</span></div>
+      <div class="total-row"><span class="total-label">总热量</span><span class="total-value" style="color:var(--red);">2466kcal / 1500-1700（超标766kcal）</span></div>
+      <div class="analysis"><span class="dot dot-red"></span>桂圆红枣蛋糕热量密度高可减量<br><span class="dot dot-red"></span>饼干类零食热量累积较快</div>
+    </div>
+  </div>
+
+  <!-- 2026-05-07 -->
+  <div class="day-card" data-date="2026-05-07">
+    <div class="day-header">
+      <span class="day-title">5月7日 周四</span>
+      <div class="day-summary">
+        <span class="badge badge-red">蛋白质 153%</span>
+        <span class="badge badge-red">热量 超标</span>
+      </div>
+    </div>
+    <div class="meal-section">
+      <div class="meal-title">早餐</div>
+      <table><tr><th>食物</th><th>分量</th><th>蛋白(g)</th><th>热量</th></tr>
+        <tr><td>无糖酸奶</td><td>200g</td><td>6</td><td>120</td></tr>
+        <tr><td>5.0蛋白牛奶</td><td>100ml</td><td>5</td><td>65</td></tr>
+      </table>
+      <div class="subtotal">小计：蛋白质 11g · 热量 185kcal</div>
+    </div>
+    <div class="meal-section">
+      <div class="meal-title">午餐</div>
+      <table><tr><th>食物</th><th>分量</th><th>蛋白(g)</th><th>热量</th></tr>
+        <tr><td>西红柿鸡蛋菠菜面</td><td>1份</td><td>11.7</td><td>351</td></tr>
+        <tr><td>奶皮子手工酸奶</td><td>100g</td><td>3</td><td>110</td></tr>
+      </table>
+      <div class="subtotal">小计：蛋白质 15g · 热量 461kcal</div>
+    </div>
+    <div class="meal-section">
+      <div class="meal-title">下午茶</div>
+      <table><tr><th>食物</th><th>分量</th><th>蛋白(g)</th><th>热量</th></tr>
+        <tr><td>5.0蛋白牛奶</td><td>200ml</td><td>10</td><td>130</td></tr>
+        <tr><td>无糖普洱茶</td><td>550ml</td><td>0</td><td>0</td></tr>
+      </table>
+      <div class="subtotal">小计：蛋白质 10g · 热量 130kcal</div>
+    </div>
+    <div class="meal-section">
+      <div class="meal-title">晚餐</div>
+      <table><tr><th>食物</th><th>分量</th><th>蛋白(g)</th><th>热量</th></tr>
+        <tr><td>脆皮鸡煲（鸡肉）</td><td>~200g</td><td>40</td><td>500</td></tr>
+        <tr><td>蘸料（沙茶酱等）</td><td>-</td><td>5</td><td>150</td></tr>
+      </table>
+      <div class="subtotal">小计：蛋白质 45g · 热量 650kcal</div>
+    </div>
+    <div class="meal-section">
+      <div class="meal-title">加餐</div>
+      <table><tr><th>食物</th><th>分量</th><th>蛋白(g)</th><th>热量</th></tr>
+        <tr><td>榴莲</td><td>3块(~425g)</td><td>10</td><td>625</td></tr>
+      </table>
+      <div class="subtotal">小计：蛋白质 10g · 热量 625kcal</div>
+    </div>
+    <div class="day-total">
+      <div class="total-row"><span class="total-label">总蛋白质</span><span class="total-value" style="color:var(--red);">100.7g / 66g（超标153%）</span></div>
+      <div class="total-row"><span class="total-label">总热量</span><span class="total-value" style="color:var(--red);">2051kcal / 1500-1700（超标351kcal）</span></div>
+      <div class="analysis"><span class="dot dot-red"></span>脆皮鸡煲带皮，脂肪和热量偏高<br><span class="dot dot-red"></span>榴莲热量高（625kcal）</div>
+    </div>
+  </div>
+
+  <!-- 2026-05-06 -->
+  <div class="day-card" data-date="2026-05-06">
+    <div class="day-header">
+      <span class="day-title">5月6日 周三</span>
+      <div class="day-summary">
+        <span class="badge badge-red">蛋白质 188%</span>
+        <span class="badge badge-red">热量 超标</span>
+      </div>
+    </div>
+    <div class="meal-section">
+      <div class="meal-title">早餐</div>
+      <table><tr><th>食物</th><th>分量</th><th>蛋白(g)</th><th>热量</th></tr>
+        <tr><td>酸奶</td><td>150ml</td><td>5</td><td>90</td></tr>
+        <tr><td>牛奶</td><td>100ml</td><td>5</td><td>65</td></tr>
+      </table>
+      <div class="subtotal">小计：蛋白质 10g · 热量 155kcal</div>
+    </div>
+    <div class="meal-section">
+      <div class="meal-title">午餐</div>
+      <table><tr><th>食物</th><th>分量</th><th>蛋白(g)</th><th>热量</th></tr>
+        <tr><td>海南鸡胸饭</td><td>1份</td><td>35</td><td>360</td></tr>
+      </table>
+      <div class="subtotal">小计：蛋白质 35g · 热量 360kcal</div>
+    </div>
+    <div class="meal-section">
+      <div class="meal-title">下午茶</div>
+      <table><tr><th>食物</th><th>分量</th><th>蛋白(g)</th><th>热量</th></tr>
+        <tr><td>茉莉奶白</td><td>1杯</td><td>8</td><td>220</td></tr>
+        <tr><td>每日坚果</td><td>1小袋</td><td>6</td><td>180</td></tr>
+      </table>
+      <div class="subtotal">小计：蛋白质 14g · 热量 400kcal</div>
+    </div>
+    <div class="meal-section">
+      <div class="meal-title">晚餐</div>
+      <table><tr><th>食物</th><th>分量</th><th>蛋白(g)</th><th>热量</th></tr>
+        <tr><td>鹅肉丸</td><td>7颗</td><td>25</td><td>350</td></tr>
+        <tr><td>生烫牛肉</td><td>60g</td><td>12</td><td>150</td></tr>
+        <tr><td>豆腐</td><td>200g</td><td>16</td><td>152</td></tr>
+        <tr><td>西洋菜</td><td>120g</td><td>3</td><td>20</td></tr>
+        <tr><td>粿条</td><td>130g</td><td>3</td><td>150</td></tr>
+        <tr><td>蒜酥油</td><td>2汤匙</td><td>0</td><td>240</td></tr>
+      </table>
+      <div class="subtotal">小计：蛋白质 59g · 热量 1062kcal</div>
+    </div>
+    <div class="meal-section">
+      <div class="meal-title">晚上加餐</div>
+      <table><tr><th>食物</th><th>分量</th><th>蛋白(g)</th><th>热量</th></tr>
+        <tr><td>西瓜</td><td>3/8个</td><td>6</td><td>280</td></tr>
+      </table>
+      <div class="subtotal">小计：蛋白质 6g · 热量 280kcal</div>
+    </div>
+    <div class="day-total">
+      <div class="total-row"><span class="total-label">总蛋白质</span><span class="total-value" style="color:var(--red);">124g / 66g（超标188%）</span></div>
+      <div class="total-row"><span class="total-label">总热量</span><span class="total-value" style="color:var(--red);">2257kcal / 1500-1700（超标557kcal）</span></div>
+      <div class="analysis"><span class="dot dot-red"></span>蛋白质124g（严重超标）<br><span class="dot dot-red"></span>减少晚餐油脂（蒜酥油）和西瓜分量</div>
+    </div>
+  </div>
+
+  <!-- No Data -->
+  <div class="day-card" id="no-data-card">
+    <div class="no-data">
+      <div class="no-data-icon">📭</div>
+      <div>这一天还没有饮食记录</div>
+      <div style="font-size:12px;margin-top:4px;">告诉我你吃了什么，我来帮你记录～</div>
     </div>
   </div>
 </div>
 
-<!-- 2026-05-08 -->
-<div class="day-card">
-  <div class="day-header">
-    <span class="day-title">5月8日 周五</span>
-    <div class="day-summary">
-      <span class="badge badge-red">蛋白质 150%</span>
-      <span class="badge badge-red">热量 超标</span>
-    </div>
-  </div>
-
-  <div class="meal-section">
-    <div class="meal-title">早餐</div>
-    <table>
-      <tr><th>食物</th><th>分量</th><th>蛋白</th><th>热量</th></tr>
-      <tr><td>酸奶</td><td>200g</td><td>6g</td><td>120</td></tr>
-      <tr><td>牛奶</td><td>100g</td><td>3g</td><td>65</td></tr>
-    </table>
-    <div class="subtotal">小计：蛋白质 9g · 热量 185kcal</div>
-  </div>
-
-  <div class="meal-section">
-    <div class="meal-title">午餐</div>
-    <table>
-      <tr><th>食物</th><th>分量</th><th>蛋白</th><th>热量</th></tr>
-      <tr><td>KPRO 黑椒牛肉烤蔬菜谷物能量碗</td><td>1份</td><td>36g</td><td>554</td></tr>
-    </table>
-    <div class="subtotal">小计：蛋白质 36g · 热量 554kcal</div>
-  </div>
-
-  <div class="meal-section">
-    <div class="meal-title">下午茶</div>
-    <table>
-      <tr><th>食物</th><th>分量</th><th>蛋白</th><th>热量</th></tr>
-      <tr><td>4.0蛋白牛奶</td><td>180ml</td><td>7g</td><td>117</td></tr>
-      <tr><td>无糖普洱茶</td><td>550ml</td><td>0g</td><td>0</td></tr>
-    </table>
-    <div class="subtotal">小计：蛋白质 7g · 热量 117kcal</div>
-  </div>
-
-  <div class="meal-section">
-    <div class="meal-title">晚餐</div>
-    <table>
-      <tr><th>食物</th><th>分量</th><th>蛋白</th><th>热量</th></tr>
-      <tr><td>麦当劳板烧鸡腿堡（去酱）</td><td>1个</td><td>25g</td><td>430</td></tr>
-      <tr><td>藕粉</td><td>1碗</td><td>0g</td><td>105</td></tr>
-      <tr><td>牛奶（冲藕粉）</td><td>100ml</td><td>3g</td><td>65</td></tr>
-      <tr><td>西瓜</td><td>1/8个</td><td>2g</td><td>188</td></tr>
-      <tr><td>山姆金枪鱼饼干</td><td>2包</td><td>10g</td><td>340</td></tr>
-    </table>
-    <div class="subtotal">小计：蛋白质 40g · 热量 1128kcal</div>
-  </div>
-
-  <div class="meal-section">
-    <div class="meal-title">加餐</div>
-    <table>
-      <tr><th>食物</th><th>分量</th><th>蛋白</th><th>热量</th></tr>
-      <tr><td>桂圆红枣蛋糕</td><td>~125g</td><td>7g</td><td>482</td></tr>
-    </table>
-    <div class="subtotal">小计：蛋白质 7g · 热量 482kcal</div>
-  </div>
-
-  <div class="day-total">
-    <div class="total-row">
-      <span class="total-label">总蛋白质</span>
-      <span class="total-value" style="color: var(--red);">99g / 66g（超标 150%）</span>
-    </div>
-    <div class="total-row">
-      <span class="total-label">总热量</span>
-      <span class="total-value" style="color: var(--red);">2466kcal / 1500-1700（超标 766kcal）</span>
-    </div>
-    <div class="analysis">
-      <span class="dot dot-red"></span>桂圆红枣蛋糕热量密度高，可减量<br>
-      <span class="dot dot-red"></span>饼干类零食热量累积较快
-    </div>
-  </div>
-</div>
-
-<!-- 每日汇总表 -->
+<!-- Daily Summary Table -->
 <div class="info-card">
-  <div class="meal-title">每日汇总</div>
+  <div style="font-size:14px;font-weight:600;margin-bottom:12px;">每日汇总</div>
   <div class="summary-table-wrapper">
     <table class="summary-table">
-      <tr>
-        <th>日期</th><th>蛋白质</th><th>状态</th><th>热量</th><th>状态</th>
-      </tr>
-      <tr>
-        <td>5/6 周三</td>
-        <td>124g</td><td><span class="badge badge-red">188%</span></td>
-        <td>2257</td><td><span class="badge badge-red">超标</span></td>
-      </tr>
-      <tr>
-        <td>5/7 周四</td>
-        <td>100.7g</td><td><span class="badge badge-red">153%</span></td>
-        <td>2051</td><td><span class="badge badge-red">超标</span></td>
-      </tr>
-      <tr>
-        <td>5/8 周五</td>
-        <td>99g</td><td><span class="badge badge-red">150%</span></td>
-        <td>2466</td><td><span class="badge badge-red">超标</span></td>
-      </tr>
-      <tr style="background: rgba(0,113,227,0.04);">
-        <td><strong>5/9 周六</strong></td>
-        <td><strong>92g</strong></td><td><span class="badge badge-red">139%</span></td>
-        <td><strong>1358</strong></td><td><span class="badge badge-green">略低</span></td>
-      </tr>
+      <tr><th>日期</th><th>蛋白质</th><th>状态</th><th>热量</th><th>状态</th></tr>
+      <tr><td>5/6 周三</td><td>124g</td><td><span class="badge badge-red">188%</span></td><td>2257</td><td><span class="badge badge-red">超标</span></td></tr>
+      <tr><td>5/7 周四</td><td>100.7g</td><td><span class="badge badge-red">153%</span></td><td>2051</td><td><span class="badge badge-red">超标</span></td></tr>
+      <tr><td>5/8 周五</td><td>99g</td><td><span class="badge badge-red">150%</span></td><td>2466</td><td><span class="badge badge-red">超标</span></td></tr>
+      <tr style="background:rgba(0,113,227,0.04);"><td><strong>5/9 周六</strong></td><td><strong>92g</strong></td><td><span class="badge badge-red">139%</span></td><td><strong>1358</strong></td><td><span class="badge badge-green">略低</span></td></tr>
     </table>
   </div>
 </div>
 
-<p style="text-align: center; font-size: 11px; color: var(--text-secondary); margin-top: 24px; margin-bottom: 16px;">
-  数据自动估算 · 每天告诉我吃了什么，我会帮你更新 ✨
-</p>
+<p style="text-align:center;font-size:11px;color:var(--text-secondary);margin-top:24px;margin-bottom:16px;">数据自动估算 · 每天告诉我吃了什么，我会帮你更新 ✨</p>
+
+<script>
+  const dateData = {
+    '2026-05-06': { title: '5月6日 周三', weekday: '2026年5月6日 · 周三' },
+    '2026-05-07': { title: '5月7日 周四', weekday: '2026年5月7日 · 周四' },
+    '2026-05-08': { title: '5月8日 周五', weekday: '2026年5月8日 · 周五' },
+    '2026-05-09': { title: '5月9日 周六', weekday: '2026年5月9日 · 周六' },
+  };
+
+  let currentDate = '2026-05-09';
+
+  function goToDate(dateStr) {
+    currentDate = dateStr;
+    updateView();
+  }
+
+  function goToToday() {
+    goToDate('2026-05-09');
+  }
+
+  function changeDate(delta) {
+    const d = new Date(currentDate);
+    d.setDate(d.getDate() + delta);
+    const str = d.toISOString().split('T')[0];
+    goToDate(str);
+  }
+
+  function updateView() {
+    // Update date display
+    const info = dateData[currentDate];
+    if (info) {
+      document.getElementById('current-date-text').textContent = info.title;
+      document.getElementById('current-weekday').textContent = info.weekday;
+    } else {
+      const d = new Date(currentDate);
+      const weekdays = ['周日','周一','周二','周三','周四','周五','周六'];
+      document.getElementById('current-date-text').textContent = `${d.getMonth()+1}月${d.getDate()}日`;
+      document.getElementById('current-weekday').textContent = `${d.getFullYear()}年${d.getMonth()+1}月${d.getDate()}日 · ${weekdays[d.getDay()]}`;
+    }
+
+    // Show/hide day cards
+    document.querySelectorAll('.day-card').forEach(card => {
+      card.classList.remove('active');
+    });
+
+    const target = document.querySelector(`.day-card[data-date="${currentDate}"]`);
+    if (target) {
+      target.classList.add('active');
+    } else {
+      document.getElementById('no-data-card').classList.add('active');
+    }
+
+    // Update date picker
+    document.getElementById('date-picker').value = currentDate;
+
+    // Update quick buttons
+    document.querySelectorAll('.quick-btn').forEach(btn => {
+      btn.classList.remove('active');
+    });
+    const activeBtn = document.querySelector(`.quick-btn[onclick*="${currentDate}"]`);
+    if (activeBtn) activeBtn.classList.add('active');
+  }
+
+  // Init
+  document.getElementById('date-picker').value = currentDate;
+  updateView();
+</script>
 
 </body>
 </html>
