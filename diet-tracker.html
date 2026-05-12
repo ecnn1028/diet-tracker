@@ -405,7 +405,9 @@
     <button class="quick-btn" onclick="goToDate('2026-05-06')">5/6 周三</button>
     <button class="quick-btn" onclick="goToDate('2026-05-07')">5/7 周四</button>
     <button class="quick-btn" onclick="goToDate('2026-05-08')">5/8 周五</button>
-    <button class="quick-btn active" onclick="goToDate('2026-05-09')">5/9 周六</button>
+    <button class="quick-btn" onclick="goToDate('2026-05-09')">5/9 周六</button>
+    <button class="quick-btn" onclick="goToDate('2026-05-10')">5/10 周日</button>
+    <button class="quick-btn" onclick="goToDate('2026-05-11')">5/11 周一</button>
     <button class="quick-btn" onclick="goToToday()">今天</button>
   </div>
 </div>
@@ -434,6 +436,120 @@
 
 <!-- Day Detail Cards -->
 <div id="day-cards-container">
+
+  <!-- 2026-05-11 -->
+  <div class="day-card" data-date="2026-05-11">
+    <div class="day-header">
+      <span class="day-title">5月11日 周一</span>
+      <div class="day-summary">
+        <span class="badge badge-red">蛋白质 136%</span>
+        <span class="badge badge-orange">热量 略超</span>
+      </div>
+    </div>
+    <div class="meal-section">
+      <div class="meal-title">早餐</div>
+      <table><tr><th>食物</th><th>分量</th><th>蛋白(g)</th><th>热量</th></tr>
+        <tr><td>无糖酸奶</td><td>200g</td><td>6</td><td>120</td></tr>
+      </table>
+      <div class="subtotal">小计：蛋白质 6g · 热量 120kcal</div>
+    </div>
+    <div class="meal-section">
+      <div class="meal-title">午餐</div>
+      <table><tr><th>食物</th><th>分量</th><th>蛋白(g)</th><th>热量</th></tr>
+        <tr><td>海南鸡胸饭</td><td>1份</td><td>35</td><td>360</td></tr>
+      </table>
+      <div class="subtotal">小计：蛋白质 35g · 热量 360kcal</div>
+    </div>
+    <div class="meal-section">
+      <div class="meal-title">下午茶</div>
+      <table><tr><th>食物</th><th>分量</th><th>蛋白(g)</th><th>热量</th></tr>
+        <tr><td>JPG 茉莉冷萃</td><td>14oz（默认）</td><td>0</td><td>80</td></tr>
+      </table>
+      <div class="subtotal">小计：蛋白质 0g · 热量 80kcal</div>
+    </div>
+    <div class="meal-section">
+      <div class="meal-title">晚餐</div>
+      <table><tr><th>食物</th><th>分量</th><th>蛋白(g)</th><th>热量</th></tr>
+        <tr><td>麦当劳板烧鸡腿堡（去酱）</td><td>1个</td><td>25</td><td>430</td></tr>
+      </table>
+      <div class="subtotal">小计：蛋白质 25g · 热量 430kcal</div>
+    </div>
+    <div class="meal-section">
+      <div class="meal-title">加餐</div>
+      <table><tr><th>食物</th><th>分量</th><th>蛋白(g)</th><th>热量</th></tr>
+        <tr><td>山姆金枪鱼黄油芥末饼干</td><td>2包(~70g)</td><td>10</td><td>340</td></tr>
+        <tr><td>橘子</td><td>1个(~100g)</td><td>1</td><td>45</td></tr>
+      </table>
+      <div class="subtotal">小计：蛋白质 11g · 热量 385kcal</div>
+    </div>
+    <div class="day-total">
+      <div class="total-row"><span class="total-label">总蛋白质</span><span class="total-value" style="color:var(--red);">77g / 66g（超标 116%）</span></div>
+      <div class="total-row"><span class="total-label">总热量</span><span class="total-value" style="color:var(--orange);">1375kcal / 1500-1700（略低）</span></div>
+      <div class="analysis">
+        <span class="dot dot-green"></span>蛋白质达标<br>
+        <span class="dot dot-green"></span>热量控制良好，接近目标下限<br>
+        <span class="dot dot-orange"></span>JPG冷萃为估算值（无奶纯冷萃，约80kcal）
+      </div>
+    </div>
+  </div>
+
+  <!-- 2026-05-10 -->
+  <div class="day-card" data-date="2026-05-10">
+    <div class="day-header">
+      <span class="day-title">5月10日 周日</span>
+      <div class="day-summary">
+        <span class="badge badge-green">蛋白质 达标</span>
+        <span class="badge badge-orange">热量 略超</span>
+      </div>
+    </div>
+    <div class="meal-section">
+      <div class="meal-title">早餐</div>
+      <table><tr><th>食物</th><th>分量</th><th>蛋白(g)</th><th>热量</th></tr>
+        <tr><td>山姆必品阁泡菜饭团</td><td>1个(105g)</td><td>6</td><td>184</td></tr>
+        <tr><td>无糖酸奶</td><td>100g</td><td>3</td><td>60</td></tr>
+        <tr><td>蛋白粉</td><td>1杯</td><td>20</td><td>120</td></tr>
+      </table>
+      <div class="subtotal">小计：蛋白质 29g · 热量 364kcal</div>
+    </div>
+    <div class="meal-section">
+      <div class="meal-title">午餐（寿司郎，按122元估算）</div>
+      <table><tr><th>食物</th><th>分量</th><th>蛋白(g)</th><th>热量</th></tr>
+        <tr><td>10元碟寿司（红碟×2.5份）</td><td>5个握寿司</td><td>15</td><td>280</td></tr>
+        <tr><td>15元碟寿司（银碟×2份）</td><td>4个握寿司</td><td>16</td><td>300</td></tr>
+        <tr><td>18元碗（汤/小碗）</td><td>半份</td><td>5</td><td>100</td></tr>
+        <tr><td>38元碗（特色丼）</td><td>半份</td><td>12</td><td>280</td></tr>
+        <tr><td>油炸鱼+炸翅</td><td>各半份</td><td>10</td><td>200</td></tr>
+      </table>
+      <div class="subtotal">小计：蛋白质 58g · 热量 1160kcal</div>
+    </div>
+    <div class="meal-section">
+      <div class="meal-title">下午茶</div>
+      <table><tr><th>食物</th><th>分量</th><th>蛋白(g)</th><th>热量</th></tr>
+        <tr><td>牛奶</td><td>300ml</td><td>9</td><td>195</td></tr>
+        <tr><td>沃集鲜熟普洱</td><td>50ml</td><td>0</td><td>0</td></tr>
+      </table>
+      <div class="subtotal">小计：蛋白质 9g · 热量 195kcal</div>
+    </div>
+    <div class="meal-section">
+      <div class="meal-title">晚餐（东北菜，两人均摊）</div>
+      <table><tr><th>食物</th><th>分量</th><th>蛋白(g)</th><th>热量</th></tr>
+        <tr><td>干煸豆角（半份）</td><td>约100g</td><td>4</td><td>180</td></tr>
+        <tr><td>地三鲜（半份）</td><td>约150g</td><td>3</td><td>220</td></tr>
+        <tr><td>鸡蛋酱（少量）</td><td>约50g</td><td>4</td><td>100</td></tr>
+        <tr><td>东北米饭</td><td>1碗(~180g)</td><td>4</td><td>234</td></tr>
+      </table>
+      <div class="subtotal">小计：蛋白质 15g · 热量 734kcal</div>
+    </div>
+    <div class="day-total">
+      <div class="total-row"><span class="total-label">总蛋白质</span><span class="total-value" style="color:var(--green);">111g / 66g（超标 168%）</span></div>
+      <div class="total-row"><span class="total-label">总热量</span><span class="total-value" style="color:var(--red);">2453kcal / 1500-1700（超标 753kcal）</span></div>
+      <div class="analysis">
+        <span class="dot dot-green"></span>蛋白质充足（蛋白粉+寿司郎贡献大）<br>
+        <span class="dot dot-red"></span>热量超标主因：寿司郎炸物+东北菜油脂较高<br>
+        <span class="dot dot-orange"></span>寿司郎为按122元账单估算，实际可能有出入
+      </div>
+    </div>
+  </div>
 
   <!-- 2026-05-09 -->
   <div class="day-card active" data-date="2026-05-09">
@@ -671,7 +787,9 @@
       <tr><td>5/6 周三</td><td>124g</td><td><span class="badge badge-red">188%</span></td><td>2257</td><td><span class="badge badge-red">超标</span></td></tr>
       <tr><td>5/7 周四</td><td>100.7g</td><td><span class="badge badge-red">153%</span></td><td>2051</td><td><span class="badge badge-red">超标</span></td></tr>
       <tr><td>5/8 周五</td><td>99g</td><td><span class="badge badge-red">150%</span></td><td>2466</td><td><span class="badge badge-red">超标</span></td></tr>
-      <tr style="background:rgba(0,113,227,0.04);"><td><strong>5/9 周六</strong></td><td><strong>92g</strong></td><td><span class="badge badge-red">139%</span></td><td><strong>1358</strong></td><td><span class="badge badge-green">略低</span></td></tr>
+      <tr><td>5/9 周六</td><td>92g</td><td><span class="badge badge-red">139%</span></td><td>1358</td><td><span class="badge badge-green">略低</span></td></tr>
+      <tr><td>5/10 周日</td><td>111g</td><td><span class="badge badge-red">168%</span></td><td>2453</td><td><span class="badge badge-red">超标</span></td></tr>
+      <tr style="background:rgba(0,113,227,0.04);"><td><strong>5/11 周一</strong></td><td><strong>77g</strong></td><td><span class="badge badge-green">116%</span></td><td><strong>1375</strong></td><td><span class="badge badge-green">略低</span></td></tr>
     </table>
   </div>
 </div>
@@ -684,9 +802,12 @@
     '2026-05-07': { title: '5月7日 周四', weekday: '2026年5月7日 · 周四' },
     '2026-05-08': { title: '5月8日 周五', weekday: '2026年5月8日 · 周五' },
     '2026-05-09': { title: '5月9日 周六', weekday: '2026年5月9日 · 周六' },
+    '2026-05-10': { title: '5月10日 周日', weekday: '2026年5月10日 · 周日' },
+    '2026-05-11': { title: '5月11日 周一', weekday: '2026年5月11日 · 周一' },
+    '2026-05-12': { title: '5月12日 周二', weekday: '2026年5月12日 · 周二' },
   };
 
-  let currentDate = '2026-05-09';
+  let currentDate = '2026-05-11';
 
   function goToDate(dateStr) {
     currentDate = dateStr;
@@ -694,7 +815,7 @@
   }
 
   function goToToday() {
-    goToDate('2026-05-09');
+    goToDate('2026-05-12');
   }
 
   function changeDate(delta) {
