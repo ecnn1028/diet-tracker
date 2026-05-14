@@ -410,6 +410,7 @@
     <button class="quick-btn" onclick="goToDate('2026-05-11')">5/11 周一</button>
     <button class="quick-btn" onclick="goToDate('2026-05-12')">5/12 周二</button>
     <button class="quick-btn" onclick="goToDate('2026-05-13')">5/13 周三</button>
+    <button class="quick-btn" onclick="goToDate('2026-05-14')">5/14 周四</button>
     <button class="quick-btn" onclick="goToToday()">今天</button>
   </div>
 </div>
@@ -776,8 +777,8 @@
     <div class="day-header">
       <span class="day-title">5月12日 周二</span>
       <div class="day-summary">
-        <span class="badge badge-red">蛋白质 116%</span>
-        <span class="badge badge-orange">热量 略低</span>
+        <span class="badge badge-red">蛋白质 131%</span>
+        <span class="badge badge-green">热量 达标</span>
       </div>
     </div>
     <div class="meal-section">
@@ -810,23 +811,30 @@
       </table>
       <div class="subtotal">小计：蛋白质 26g · 热量 563kcal</div>
     </div>
+    <div class="meal-section">
+      <div class="meal-title">晚上加餐</div>
+      <table><tr><th>食物</th><th>分量</th><th>蛋白(g)</th><th>热量</th></tr>
+        <tr><td>山姆金枪鱼黄油芥末饼干</td><td>2包(~70g)</td><td>10</td><td>340</td></tr>
+      </table>
+      <div class="subtotal">小计：蛋白质 10g · 热量 340kcal</div>
+    </div>
     <div class="day-total">
-      <div class="total-row"><span class="total-label">总蛋白质</span><span class="total-value" style="color:var(--red);">76.4g / 66g（超标 116%）</span></div>
-      <div class="total-row"><span class="total-label">总热量</span><span class="total-value" style="color:var(--orange);">1258kcal / 1500-1700（略低）</span></div>
+      <div class="total-row"><span class="total-label">总蛋白质</span><span class="total-value" style="color:var(--red);">86.4g / 66g（超标 131%）</span></div>
+      <div class="total-row"><span class="total-label">总热量</span><span class="total-value" style="color:var(--green);">1598kcal / 1500-1700（达标）</span></div>
       <div class="analysis">
         <span class="dot dot-green"></span>蛋白质充足达标<br>
-        <span class="dot dot-orange"></span>热量略低于目标，可适量加餐补充
+        <span class="dot dot-green"></span>热量控制在目标范围内
       </div>
     </div>
   </div>
 
   <!-- 2026-05-13 -->
-  <div class="day-card active" data-date="2026-05-13">
+  <div class="day-card" data-date="2026-05-13">
     <div class="day-header">
       <span class="day-title">5月13日 周三</span>
       <div class="day-summary">
-        <span class="badge badge-orange">蛋白质 95%</span>
-        <span class="badge badge-green">热量 略低</span>
+        <span class="badge badge-red">蛋白质 110%</span>
+        <span class="badge badge-orange">热量 略超</span>
       </div>
     </div>
     <div class="meal-section">
@@ -859,12 +867,68 @@
       </table>
       <div class="subtotal">小计：蛋白质 25g · 热量 430kcal</div>
     </div>
+    <div class="meal-section">
+      <div class="meal-title">晚上加餐</div>
+      <table><tr><th>食物</th><th>分量</th><th>蛋白(g)</th><th>热量</th></tr>
+        <tr><td>山姆金枪鱼黄油芥末饼干</td><td>2包(~70g)</td><td>10</td><td>340</td></tr>
+      </table>
+      <div class="subtotal">小计：蛋白质 10g · 热量 340kcal</div>
+    </div>
     <div class="day-total">
-      <div class="total-row"><span class="total-label">总蛋白质</span><span class="total-value" style="color:var(--orange);">62.4g / 66g（95%）</span></div>
-      <div class="total-row"><span class="total-label">总热量</span><span class="total-value" style="color:var(--green);">1425kcal / 1500-1700（略低）</span></div>
+      <div class="total-row"><span class="total-label">总蛋白质</span><span class="total-value" style="color:var(--red);">72.4g / 66g（超标 110%）</span></div>
+      <div class="total-row"><span class="total-label">总热量</span><span class="total-value" style="color:var(--orange);">1765kcal / 1500-1700（略超）</span></div>
       <div class="analysis">
-        <span class="dot dot-green"></span>蛋白质接近达标，差3.6g<br>
-        <span class="dot dot-orange"></span>热量略低，还差75kcal到下限
+        <span class="dot dot-green"></span>蛋白质达标<br>
+        <span class="dot dot-orange"></span>热量略超目标上限65kcal，整体OK
+      </div>
+    </div>
+  </div>
+
+  <!-- 2026-05-14 -->
+  <div class="day-card active" data-date="2026-05-14">
+    <div class="day-header">
+      <span class="day-title">5月14日 周四</span>
+      <div class="day-summary">
+        <span class="badge badge-red">蛋白质 126%</span>
+        <span class="badge badge-orange">热量 略低</span>
+      </div>
+    </div>
+    <div class="meal-section">
+      <div class="meal-title">早餐</div>
+      <table><tr><th>食物</th><th>分量</th><th>蛋白(g)</th><th>热量</th></tr>
+        <tr><td>牛奶</td><td>250ml</td><td>7.5</td><td>162</td></tr>
+        <tr><td>山姆燕麦</td><td>半杯(~75g)</td><td>10</td><td>280</td></tr>
+      </table>
+      <div class="subtotal">小计：蛋白质 17.5g · 热量 442kcal</div>
+    </div>
+    <div class="meal-section">
+      <div class="meal-title">午餐</div>
+      <table><tr><th>食物</th><th>分量</th><th>蛋白(g)</th><th>热量</th></tr>
+        <tr><td>海南鸡饭</td><td>1份</td><td>35</td><td>360</td></tr>
+        <tr><td>例汤</td><td>1碗</td><td>2</td><td>30</td></tr>
+      </table>
+      <div class="subtotal">小计：蛋白质 37g · 热量 390kcal</div>
+    </div>
+    <div class="meal-section">
+      <div class="meal-title">下午茶</div>
+      <table><tr><th>食物</th><th>分量</th><th>蛋白(g)</th><th>热量</th></tr>
+        <tr><td>每日坚果</td><td>1小袋</td><td>3.9</td><td>150</td></tr>
+      </table>
+      <div class="subtotal">小计：蛋白质 3.9g · 热量 150kcal</div>
+    </div>
+    <div class="meal-section">
+      <div class="meal-title">晚餐</div>
+      <table><tr><th>食物</th><th>分量</th><th>蛋白(g)</th><th>热量</th></tr>
+        <tr><td>麦当劳板烧鸡腿堡（去酱）</td><td>1个</td><td>25</td><td>430</td></tr>
+      </table>
+      <div class="subtotal">小计：蛋白质 25g · 热量 430kcal</div>
+    </div>
+    <div class="day-total">
+      <div class="total-row"><span class="total-label">总蛋白质</span><span class="total-value" style="color:var(--red);">83.4g / 66g（超标 126%）</span></div>
+      <div class="total-row"><span class="total-label">总热量</span><span class="total-value" style="color:var(--orange);">1412kcal / 1500-1700（略低）</span></div>
+      <div class="analysis">
+        <span class="dot dot-green"></span>蛋白质充足达标<br>
+        <span class="dot dot-orange"></span>热量略低，可适量加餐补充
       </div>
     </div>
   </div>
@@ -891,8 +955,9 @@
       <tr><td>5/9 周六</td><td>92g</td><td><span class="badge badge-red">139%</span></td><td>1358</td><td><span class="badge badge-green">略低</span></td></tr>
       <tr><td>5/10 周日</td><td>111g</td><td><span class="badge badge-red">168%</span></td><td>2453</td><td><span class="badge badge-red">超标</span></td></tr>
       <tr style="background:rgba(0,113,227,0.04);"><td><strong>5/11 周一</strong></td><td><strong>80.9g</strong></td><td><span class="badge badge-red">123%</span></td><td><strong>1525</strong></td><td><span class="badge badge-green">达标</span></td></tr>
-      <tr style="background:rgba(0,113,227,0.04);"><td><strong>5/12 周二</strong></td><td><strong>76.4g</strong></td><td><span class="badge badge-red">116%</span></td><td><strong>1258</strong></td><td><span class="badge badge-orange">略低</span></td></tr>
-      <tr style="background:rgba(0,113,227,0.04);"><td><strong>5/13 周三</strong></td><td><strong>62.4g</strong></td><td><span class="badge badge-orange">95%</span></td><td><strong>1425</strong></td><td><span class="badge badge-green">略低</span></td></tr>
+      <tr style="background:rgba(0,113,227,0.04);"><td><strong>5/12 周二</strong></td><td><strong>86.4g</strong></td><td><span class="badge badge-red">131%</span></td><td><strong>1598</strong></td><td><span class="badge badge-green">达标</span></td></tr>
+      <tr style="background:rgba(0,113,227,0.04);"><td><strong>5/13 周三</strong></td><td><strong>72.4g</strong></td><td><span class="badge badge-red">110%</span></td><td><strong>1765</strong></td><td><span class="badge badge-orange">略超</span></td></tr>
+      <tr style="background:rgba(0,113,227,0.04);"><td><strong>5/14 周四</strong></td><td><strong>83.4g</strong></td><td><span class="badge badge-red">126%</span></td><td><strong>1412</strong></td><td><span class="badge badge-orange">略低</span></td></tr>
     </table>
   </div>
 </div>
@@ -909,9 +974,10 @@
     '2026-05-11': { title: '5月11日 周一', weekday: '2026年5月11日 · 周一' },
     '2026-05-12': { title: '5月12日 周二', weekday: '2026年5月12日 · 周二' },
     '2026-05-13': { title: '5月13日 周三', weekday: '2026年5月13日 · 周三' },
+    '2026-05-14': { title: '5月14日 周四', weekday: '2026年5月14日 · 周四' },
   };
 
-  let currentDate = '2026-05-13';
+  let currentDate = '2026-05-14';
 
   function goToDate(dateStr) {
     currentDate = dateStr;
@@ -919,7 +985,7 @@
   }
 
   function goToToday() {
-    goToDate('2026-05-13');
+    goToDate('2026-05-14');
   }
 
   function changeDate(delta) {
