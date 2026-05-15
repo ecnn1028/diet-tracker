@@ -411,6 +411,7 @@
     <button class="quick-btn" onclick="goToDate('2026-05-12')">5/12 周二</button>
     <button class="quick-btn" onclick="goToDate('2026-05-13')">5/13 周三</button>
     <button class="quick-btn" onclick="goToDate('2026-05-14')">5/14 周四</button>
+    <button class="quick-btn" onclick="goToDate('2026-05-15')">5/15 周五</button>
     <button class="quick-btn" onclick="goToToday()">今天</button>
   </div>
 </div>
@@ -885,7 +886,7 @@
   </div>
 
   <!-- 2026-05-14 -->
-  <div class="day-card active" data-date="2026-05-14">
+  <div class="day-card" data-date="2026-05-14">
     <div class="day-header">
       <span class="day-title">5月14日 周四</span>
       <div class="day-summary">
@@ -950,6 +951,19 @@
       <div style="font-size:12px;margin-top:4px;">告诉我你吃了什么，我来帮你记录～</div>
     </div>
   </div>
+
+  <!-- 2026-05-15 -->
+  <div class="day-card active" data-date="2026-05-15">
+    <div class="day-header">
+      <span class="day-title">5月15日 周五</span>
+      <div class="day-summary">
+        <span class="badge badge-purple">⚖️ 55.90kg</span>
+      </div>
+    </div>
+    <div style="padding:20px 0;text-align:center;color:var(--text-secondary);font-size:13px;">
+      今天还没有饮食记录 · 告诉我你吃了什么～
+    </div>
+  </div>
 </div>
 
 <!-- Daily Summary Table -->
@@ -957,17 +971,54 @@
   <div style="font-size:14px;font-weight:600;margin-bottom:12px;">每日汇总</div>
   <div class="summary-table-wrapper">
     <table class="summary-table">
-      <tr><th>日期</th><th>蛋白质</th><th>状态</th><th>热量</th><th>状态</th></tr>
-      <tr><td>5/6 周三</td><td>121.9g</td><td><span class="badge badge-red">185%</span></td><td>2227</td><td><span class="badge badge-red">超标</span></td></tr>
-      <tr><td>5/7 周四</td><td>100.7g</td><td><span class="badge badge-red">153%</span></td><td>2051</td><td><span class="badge badge-red">超标</span></td></tr>
-      <tr><td>5/8 周五</td><td>92.8g</td><td><span class="badge badge-red">141%</span></td><td>2342</td><td><span class="badge badge-red">超标</span></td></tr>
-      <tr><td>5/9 周六</td><td>85g</td><td><span class="badge badge-red">129%</span></td><td>1160</td><td><span class="badge badge-orange">略低</span></td></tr>
-      <tr><td>5/10 周日</td><td>111g</td><td><span class="badge badge-red">168%</span></td><td>2453</td><td><span class="badge badge-red">超标</span></td></tr>
-      <tr style="background:rgba(0,113,227,0.04);"><td><strong>5/11 周一</strong></td><td><strong>80.9g</strong></td><td><span class="badge badge-red">123%</span></td><td><strong>1525</strong></td><td><span class="badge badge-green">达标</span></td></tr>
-      <tr style="background:rgba(0,113,227,0.04);"><td><strong>5/12 周二</strong></td><td><strong>80.2g</strong></td><td><span class="badge badge-red">122%</span></td><td><strong>1474</strong></td><td><span class="badge badge-orange">略低</span></td></tr>
-      <tr style="background:rgba(0,113,227,0.04);"><td><strong>5/13 周三</strong></td><td><strong>66.2g</strong></td><td><span class="badge badge-green">100%</span></td><td><strong>1641</strong></td><td><span class="badge badge-orange">略低</span></td></tr>
-      <tr style="background:rgba(0,113,227,0.04);"><td><strong>5/14 周四</strong></td><td><strong>94.1g</strong></td><td><span class="badge badge-red">143%</span></td><td><strong>1801</strong></td><td><span class="badge badge-green">达标</span></td></tr>
+      <tr><th>日期</th><th>体重</th><th>蛋白质</th><th>状态</th><th>热量</th><th>状态</th></tr>
+      <tr><td>5/6 周三</td><td>—</td><td>121.9g</td><td><span class="badge badge-red">185%</span></td><td>2227</td><td><span class="badge badge-red">超标</span></td></tr>
+      <tr><td>5/7 周四</td><td>—</td><td>100.7g</td><td><span class="badge badge-red">153%</span></td><td>2051</td><td><span class="badge badge-red">超标</span></td></tr>
+      <tr><td>5/8 周五</td><td>—</td><td>92.8g</td><td><span class="badge badge-red">141%</span></td><td>2342</td><td><span class="badge badge-red">超标</span></td></tr>
+      <tr><td>5/9 周六</td><td>—</td><td>85g</td><td><span class="badge badge-red">129%</span></td><td>1160</td><td><span class="badge badge-orange">略低</span></td></tr>
+      <tr><td>5/10 周日</td><td>—</td><td>111g</td><td><span class="badge badge-red">168%</span></td><td>2453</td><td><span class="badge badge-red">超标</span></td></tr>
+      <tr style="background:rgba(0,113,227,0.04);"><td><strong>5/11 周一</strong></td><td>—</td><td><strong>80.9g</strong></td><td><span class="badge badge-red">123%</span></td><td><strong>1525</strong></td><td><span class="badge badge-green">达标</span></td></tr>
+      <tr style="background:rgba(0,113,227,0.04);"><td><strong>5/12 周二</strong></td><td>—</td><td><strong>80.2g</strong></td><td><span class="badge badge-red">122%</span></td><td><strong>1474</strong></td><td><span class="badge badge-orange">略低</span></td></tr>
+      <tr style="background:rgba(0,113,227,0.04);"><td><strong>5/13 周三</strong></td><td>—</td><td><strong>66.2g</strong></td><td><span class="badge badge-green">100%</span></td><td><strong>1641</strong></td><td><span class="badge badge-orange">略低</span></td></tr>
+      <tr style="background:rgba(0,113,227,0.04);"><td><strong>5/14 周四</strong></td><td>—</td><td><strong>94.1g</strong></td><td><span class="badge badge-red">143%</span></td><td><strong>1801</strong></td><td><span class="badge badge-green">达标</span></td></tr>
+      <tr style="background:rgba(0,113,227,0.04);"><td><strong>5/15 周五</strong></td><td><strong style="color:var(--accent);">55.90kg</strong></td><td>—</td><td>—</td><td>—</td><td>—</td></tr>
     </table>
+  </div>
+</div>
+
+<!-- Weight Chart -->
+<div class="info-card" id="weight-card">
+  <div style="font-size:14px;font-weight:600;margin-bottom:4px;">体重趋势</div>
+  <div style="font-size:12px;color:var(--text-secondary);margin-bottom:14px;">目标：减脂增肌，体重缓慢下降或维持</div>
+  <div style="position:relative;">
+    <svg id="weight-chart" viewBox="0 0 680 160" xmlns="http://www.w3.org/2000/svg" style="width:100%;height:auto;display:block;overflow:visible;">
+      <!-- Grid lines -->
+      <line x1="60" y1="20" x2="640" y2="20" stroke="var(--border)" stroke-width="0.5"/>
+      <line x1="60" y1="60" x2="640" y2="60" stroke="var(--border)" stroke-width="0.5"/>
+      <line x1="60" y1="100" x2="640" y2="100" stroke="var(--border)" stroke-width="0.5"/>
+      <line x1="60" y1="140" x2="640" y2="140" stroke="var(--border)" stroke-width="0.5"/>
+      <!-- Y axis labels -->
+      <text x="52" y="24" font-size="10" fill="var(--text-secondary)" text-anchor="end">56.5</text>
+      <text x="52" y="64" font-size="10" fill="var(--text-secondary)" text-anchor="end">56.0</text>
+      <text x="52" y="104" font-size="10" fill="var(--text-secondary)" text-anchor="end">55.5</text>
+      <text x="52" y="144" font-size="10" fill="var(--text-secondary)" text-anchor="end">55.0</text>
+      <!-- Target line -->
+      <line x1="60" y1="120" x2="640" y2="120" stroke="var(--green)" stroke-width="1" stroke-dasharray="4,4" opacity="0.5"/>
+      <text x="644" y="124" font-size="9" fill="var(--green)" opacity="0.8">目标</text>
+      <!-- Data points: 5/15=55.90kg → y=(56.5-55.90)/(56.5-55.0)*120+20 = 0.6/1.5*120+20 = 48+20 = 68 -->
+      <!-- X positions: will grow as data fills in. Single point at x=350 center for now -->
+      <circle cx="350" cy="68" r="5" fill="var(--accent)" stroke="white" stroke-width="2"/>
+      <!-- Label -->
+      <text x="350" y="58" font-size="10" fill="var(--accent)" text-anchor="middle" font-weight="600">55.90</text>
+      <text x="350" y="152" font-size="10" fill="var(--text-secondary)" text-anchor="middle">5/15</text>
+      <!-- Placeholder hint -->
+      <text x="350" y="110" font-size="11" fill="var(--text-secondary)" text-anchor="middle" opacity="0.6">数据积累中，每天记录后趋势可见 📈</text>
+    </svg>
+  </div>
+  <div style="margin-top:8px;font-size:11px;color:var(--text-secondary);display:flex;gap:16px;flex-wrap:wrap;">
+    <span>📅 开始记录：2026-05-15</span>
+    <span>⚖️ 最新：55.90kg</span>
+    <span>🎯 起始：55.90kg</span>
   </div>
 </div>
 
@@ -984,9 +1035,10 @@
     '2026-05-12': { title: '5月12日 周二', weekday: '2026年5月12日 · 周二' },
     '2026-05-13': { title: '5月13日 周三', weekday: '2026年5月13日 · 周三' },
     '2026-05-14': { title: '5月14日 周四', weekday: '2026年5月14日 · 周四' },
+    '2026-05-15': { title: '5月15日 周五', weekday: '2026年5月15日 · 周五' },
   };
 
-  let currentDate = '2026-05-14';
+  let currentDate = '2026-05-15';
 
   function goToDate(dateStr) {
     currentDate = dateStr;
@@ -994,7 +1046,7 @@
   }
 
   function goToToday() {
-    goToDate('2026-05-14');
+    goToDate('2026-05-15');
   }
 
   function changeDate(delta) {
