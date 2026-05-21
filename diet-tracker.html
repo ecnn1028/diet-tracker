@@ -417,6 +417,7 @@
     <button class="quick-btn" onclick="goToDate('2026-05-18')">5/18 周一</button>
     <button class="quick-btn" onclick="goToDate('2026-05-19')">5/19 周二</button>
     <button class="quick-btn" onclick="goToDate('2026-05-20')">5/20 周三</button>
+    <button class="quick-btn" onclick="goToDate('2026-05-21')">5/21 周四</button>
     <button class="quick-btn" onclick="goToToday()">今天</button>
   </div>
 </div>
@@ -1245,6 +1246,34 @@
     </div>
   </div>
 
+  <!-- 2026-05-21 -->
+  <div class="day-card active" data-date="2026-05-21">
+    <div class="day-header">
+      <span class="day-title">5月21日 周四</span>
+      <div class="day-summary">
+        <span class="badge badge-purple">⚖️ 55.20kg</span>
+        <span class="badge badge-orange">记录中</span>
+      </div>
+    </div>
+
+    <div class="meal-section">
+      <div class="meal-title">早餐</div>
+      <table><tr><th>食物</th><th>分量</th><th>蛋白(g)</th><th>热量</th></tr>
+        <tr><td>无糖酸奶(3.0g蛋白)</td><td>150g</td><td>4.5</td><td>90</td></tr>
+        <tr><td>4.0蛋白牛奶</td><td>50ml</td><td>2.0</td><td>33</td></tr>
+      </table>
+      <div class="subtotal">小计：蛋白质 6.5g · 热量 123kcal</div>
+    </div>
+
+    <div class="day-total">
+      <div class="total-row"><span class="total-label">已记录蛋白质</span><span class="total-value" style="color:var(--orange);">6.5g / 66g（10%，待补全）</span></div>
+      <div class="total-row"><span class="total-label">已记录热量</span><span class="total-value" style="color:var(--orange);">123kcal / 1500-1700（待补全）</span></div>
+      <div class="analysis">
+        <span class="dot dot-orange"></span>还需约60g蛋白 / 1377-1577kcal
+      </div>
+    </div>
+  </div>
+
   <!-- 2026-05-15 -->
   <div class="day-card active" data-date="2026-05-15">
     <div class="day-header">
@@ -1320,6 +1349,7 @@
       <tr style="background:rgba(0,113,227,0.04);"><td><strong>5/18 周一</strong></td><td>—</td><td><strong>82.8g</strong></td><td><span class="badge badge-red">125%</span></td><td><strong>1578</strong></td><td><span class="badge badge-green">达标</span></td></tr>
       <tr style="background:rgba(255,159,10,0.06);"><td><strong>5/19 周二</strong></td><td><strong style="color:var(--accent);">55.20kg</strong></td><td><strong>119.6g</strong></td><td><span class="badge badge-red">181%</span></td><td><strong>1869</strong></td><td><span class="badge badge-red">超标</span></td></tr>
       <tr style="background:rgba(0,113,227,0.04);"><td><strong>5/20 周三</strong></td><td>—</td><td><strong>91.1g</strong></td><td><span class="badge badge-red">138%</span></td><td><strong>1721</strong></td><td><span class="badge badge-green">达标</span></td></tr>
+      <tr style="background:rgba(255,159,10,0.06);"><td><strong>5/21 周四</strong></td><td><strong style="color:var(--accent);">55.20kg</strong></td><td><strong>6.5g+</strong></td><td><span class="badge badge-orange">记录中</span></td><td><strong>123+</strong></td><td><span class="badge badge-orange">记录中</span></td></tr>
     </table>
   </div>
 </div>
@@ -1342,21 +1372,26 @@
       <text x="52" y="144" font-size="10" fill="var(--text-secondary)" text-anchor="end">55.25</text>
       <!-- Trend line -->
       <line x1="280" y1="32" x2="420" y2="116" stroke="var(--accent)" stroke-width="2" opacity="0.3"/>
-      <!-- Data: 5/15=55.90kg → y=32, 5/19=55.20kg → y=116 -->
+      <line x1="420" y1="116" x2="520" y2="116" stroke="var(--green)" stroke-width="2" opacity="0.3"/>
+      <!-- Data: 5/15=55.90kg → y=32, 5/19=55.20kg → y=116, 5/21=55.20kg → y=116 -->
       <circle cx="280" cy="32" r="5" fill="var(--accent)" stroke="white" stroke-width="2"/>
       <circle cx="420" cy="116" r="5" fill="var(--green)" stroke="white" stroke-width="2"/>
+      <circle cx="520" cy="116" r="5" fill="var(--green)" stroke="white" stroke-width="2"/>
       <!-- Labels -->
       <text x="280" y="22" font-size="10" fill="var(--accent)" text-anchor="middle" font-weight="600">55.90</text>
       <text x="420" y="133" font-size="10" fill="var(--green)" text-anchor="middle" font-weight="600">55.20</text>
+      <text x="520" y="133" font-size="10" fill="var(--green)" text-anchor="middle" font-weight="600">55.20</text>
       <text x="280" y="152" font-size="10" fill="var(--text-secondary)" text-anchor="middle">5/15</text>
       <text x="420" y="152" font-size="10" fill="var(--text-secondary)" text-anchor="middle">5/19</text>
+      <text x="520" y="152" font-size="10" fill="var(--text-secondary)" text-anchor="middle">5/21</text>
       <!-- Change annotation -->
       <text x="350" y="70" font-size="10" fill="var(--green)" text-anchor="middle" font-weight="500">-0.70kg / 4天</text>
+      <text x="470" y="105" font-size="9" fill="var(--green)" text-anchor="middle" font-weight="400">维持 / 2天</text>
     </svg>
   </div>
   <div style="margin-top:8px;font-size:11px;color:var(--text-secondary);display:flex;gap:16px;flex-wrap:wrap;">
     <span>📅 开始记录：2026-05-15</span>
-    <span>⚖️ 最新：55.20kg（↓0.70kg）</span>
+    <span>⚖️ 最新：55.20kg（↓0.70kg / 6天）</span>
     <span>🎯 起始：55.90kg</span>
   </div>
 </div>
@@ -1380,9 +1415,10 @@
     '2026-05-18': { title: '5月18日 周一', weekday: '2026年5月18日 · 周一' },
     '2026-05-19': { title: '5月19日 周二', weekday: '2026年5月19日 · 周二' },
     '2026-05-20': { title: '5月20日 周三', weekday: '2026年5月20日 · 周三' },
+    '2026-05-21': { title: '5月21日 周四', weekday: '2026年5月21日 · 周四' },
   };
 
-  let currentDate = '2026-05-20';
+  let currentDate = '2026-05-21';
 
   function goToDate(dateStr) {
     currentDate = dateStr;
@@ -1390,7 +1426,7 @@
   }
 
   function goToToday() {
-    goToDate('2026-05-20');
+    goToDate('2026-05-21');
   }
 
   function changeDate(delta) {
