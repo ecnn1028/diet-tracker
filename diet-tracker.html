@@ -1360,6 +1360,7 @@
     <div class="day-header">
       <span class="day-title">5月26日 周二</span>
       <div class="day-summary">
+        <span class="badge badge-purple">⚖️ 56.10kg</span>
         <span class="badge badge-orange">记录中</span>
       </div>
     </div>
@@ -1399,6 +1400,7 @@
         <span class="badge badge-purple">⚖️ 55.55kg</span>
         <span class="badge badge-green">蛋白质 达标</span>
         <span class="badge badge-orange">热量 略低</span>
+        <span class="badge badge-red">未训练</span>
       </div>
     </div>
 
@@ -1438,13 +1440,21 @@
       <div class="subtotal">小计：蛋白质 38g · 热量 552kcal（实际吃3/4）</div>
     </div>
 
+    <div class="meal-section">
+      <div class="meal-title">夜宵</div>
+      <table><tr><th>食物</th><th>分量</th><th>蛋白(g)</th><th>热量</th></tr>
+        <tr><td>金枪鱼黄油芥末饼干（山姆）</td><td>1包(21g)</td><td>1.9</td><td>108</td></tr>
+      </table>
+      <div class="subtotal">小计：蛋白质 1.9g · 热量 108kcal</div>
+    </div>
+
     <div class="day-total">
-      <div class="total-row"><span class="total-label">总蛋白质</span><span class="total-value" style="color:var(--green);">69.0g / 66g（达标 105%）</span></div>
-      <div class="total-row"><span class="total-label">总热量</span><span class="total-value" style="color:var(--orange);">1305kcal / 1500-1700（略低，可）</span></div>
+      <div class="total-row"><span class="total-label">总蛋白质</span><span class="total-value" style="color:var(--green);">70.9g / 66g（达标 107%）</span></div>
+      <div class="total-row"><span class="total-label">总热量</span><span class="total-value" style="color:var(--orange);">1413kcal / 1500-1700（略低）</span></div>
       <div class="analysis">
-        <span class="dot dot-green"></span>蛋白质达标，力量训练日营养充足<br>
-        <span class="dot dot-orange"></span>热量偏低195kcal，训练后可加一杯牛奶收尾<br>
-        <span class="dot dot-red"></span>米粉夹生，做失败了😅 下次多泡久一点
+        <span class="dot dot-green"></span>蛋白质达标<br>
+        <span class="dot dot-orange"></span>热量略低，晚餐米粉夹生吃了3/4，饭后情绪性饥饿明显<br>
+        <span class="dot dot-red"></span>未完成力量训练，刷手机代替了运动
       </div>
     </div>
   </div>
@@ -1636,8 +1646,8 @@
       <tr style="background:rgba(0,113,227,0.04);"><td><strong>5/22 周五</strong></td><td><strong style="color:var(--accent);">55.15kg</strong></td><td><strong>50.0g+</strong></td><td><span class="badge badge-orange">记录中</span></td><td><strong>636+</strong></td><td><span class="badge badge-orange">记录中</span></td></tr>
       <tr style="background:rgba(255,59,48,0.04);"><td><strong>5/23 周六</strong></td><td>—</td><td><strong>95.5g</strong></td><td><span class="badge badge-red">145%</span></td><td><strong>1440</strong></td><td><span class="badge badge-orange">略低</span></td></tr>
       <tr style="background:rgba(255,59,48,0.04);"><td><strong>5/24 周日</strong></td><td>—</td><td><strong>67.9g</strong></td><td><span class="badge badge-green">103%</span></td><td><strong>1604</strong></td><td><span class="badge badge-green">达标</span></td></tr>
-      <tr style="background:rgba(0,113,227,0.04);"><td><strong>5/25 周一</strong></td><td><strong style="color:var(--accent);">55.55kg</strong></td><td><strong>69.0g</strong></td><td><span class="badge badge-green">蛋白质 达标</span></td><td><strong>1305kcal</strong></td><td><span class="badge badge-orange">热量 略低</span></td></tr>
-      <tr style="background:rgba(0,113,227,0.04);"><td><strong>5/26 周二</strong></td><td>—</td><td><strong>30.5g+</strong></td><td><span class="badge badge-orange">记录中</span></td><td><strong>813+</strong></td><td><span class="badge badge-orange">记录中</span></td></tr>
+      <tr style="background:rgba(0,113,227,0.04);"><td><strong>5/25 周一</strong></td><td><strong style="color:var(--accent);">55.55kg</strong></td><td><strong>70.9g</strong></td><td><span class="badge badge-green">蛋白质 达标</span></td><td><strong>1413kcal</strong></td><td><span class="badge badge-orange">热量 略低</span></td></tr>
+      <tr style="background:rgba(0,113,227,0.04);"><td><strong>5/26 周二</strong></td><td><strong style="color:var(--accent);">56.10kg</strong></td><td><strong>30.5g+</strong></td><td><span class="badge badge-orange">记录中</span></td><td><strong>813+</strong></td><td><span class="badge badge-orange">记录中</span></td></tr>
     </table>
   </div>
 </div>
@@ -1650,46 +1660,54 @@
     <svg id="weight-chart" viewBox="0 0 680 160" xmlns="http://www.w3.org/2000/svg" style="width:100%;height:auto;display:block;overflow:visible;">
       <!-- Grid lines -->
       <line x1="60" y1="20" x2="640" y2="20" stroke="var(--border)" stroke-width="0.5"/>
-      <line x1="60" y1="60" x2="640" y2="60" stroke="var(--border)" stroke-width="0.5"/>
-      <line x1="60" y1="100" x2="640" y2="100" stroke="var(--border)" stroke-width="0.5"/>
+      <line x1="60" y1="50" x2="640" y2="50" stroke="var(--border)" stroke-width="0.5"/>
+      <line x1="60" y1="80" x2="640" y2="80" stroke="var(--border)" stroke-width="0.5"/>
+      <line x1="60" y1="110" x2="640" y2="110" stroke="var(--border)" stroke-width="0.5"/>
       <line x1="60" y1="140" x2="640" y2="140" stroke="var(--border)" stroke-width="0.5"/>
-      <!-- Y axis labels -->
-      <text x="52" y="24" font-size="10" fill="var(--text-secondary)" text-anchor="end">56.0</text>
-      <text x="52" y="64" font-size="10" fill="var(--text-secondary)" text-anchor="end">55.75</text>
-      <text x="52" y="104" font-size="10" fill="var(--text-secondary)" text-anchor="end">55.50</text>
-      <text x="52" y="144" font-size="10" fill="var(--text-secondary)" text-anchor="end">55.25</text>
-      <!-- Trend line -->
-      <line x1="280" y1="32" x2="420" y2="116" stroke="var(--accent)" stroke-width="2" opacity="0.3"/>
-      <line x1="420" y1="116" x2="520" y2="116" stroke="var(--green)" stroke-width="2" opacity="0.3"/>
-      <line x1="520" y1="116" x2="580" y2="122" stroke="var(--green)" stroke-width="2" opacity="0.3"/>
-      <line x1="580" y1="122" x2="640" y2="74" stroke="var(--red)" stroke-width="2" opacity="0.3"/>
-      <!-- Data: 5/15=55.90→32, 5/19=55.20→116, 5/21=55.20→116, 5/22=55.15→122, 5/25=55.55→74 -->
-      <circle cx="280" cy="32" r="5" fill="var(--accent)" stroke="white" stroke-width="2"/>
-      <circle cx="420" cy="116" r="5" fill="var(--green)" stroke="white" stroke-width="2"/>
-      <circle cx="520" cy="116" r="5" fill="var(--green)" stroke="white" stroke-width="2"/>
-      <circle cx="580" cy="122" r="5" fill="var(--green)" stroke="white" stroke-width="2"/>
-      <circle cx="640" cy="74" r="5" fill="var(--red)" stroke="white" stroke-width="2"/>
+      <!-- Y axis labels (range 55.0–56.5, 6 points) -->
+      <text x="52" y="24" font-size="10" fill="var(--text-secondary)" text-anchor="end">56.5</text>
+      <text x="52" y="54" font-size="10" fill="var(--text-secondary)" text-anchor="end">56.25</text>
+      <text x="52" y="84" font-size="10" fill="var(--text-secondary)" text-anchor="end">56.0</text>
+      <text x="52" y="114" font-size="10" fill="var(--text-secondary)" text-anchor="end">55.75</text>
+      <text x="52" y="144" font-size="10" fill="var(--text-secondary)" text-anchor="end">55.5</text>
+      <!-- Trend lines -->
+      <line x1="120" y1="68" x2="224" y2="124" stroke="var(--accent)" stroke-width="2" opacity="0.3"/>
+      <line x1="224" y1="124" x2="328" y2="124" stroke="var(--green)" stroke-width="2" opacity="0.3"/>
+      <line x1="328" y1="124" x2="432" y2="128" stroke="var(--green)" stroke-width="2" opacity="0.3"/>
+      <line x1="432" y1="128" x2="536" y2="96" stroke="var(--red)" stroke-width="2" opacity="0.3"/>
+      <line x1="536" y1="96" x2="640" y2="52" stroke="var(--red)" stroke-width="2" opacity="0.3"/>
+      <!-- Data: 5/15=55.90→68, 5/19=55.20→124, 5/21=55.20→124, 5/22=55.15→128, 5/25=55.55→96, 5/26=56.10→52 -->
+      <circle cx="120" cy="68" r="5" fill="var(--accent)" stroke="white" stroke-width="2"/>
+      <circle cx="224" cy="124" r="5" fill="var(--green)" stroke="white" stroke-width="2"/>
+      <circle cx="328" cy="124" r="5" fill="var(--green)" stroke="white" stroke-width="2"/>
+      <circle cx="432" cy="128" r="5" fill="var(--green)" stroke="white" stroke-width="2"/>
+      <circle cx="536" cy="96" r="5" fill="var(--orange)" stroke="white" stroke-width="2"/>
+      <circle cx="640" cy="52" r="5" fill="var(--red)" stroke="white" stroke-width="2"/>
       <!-- Labels -->
-      <text x="280" y="22" font-size="10" fill="var(--accent)" text-anchor="middle" font-weight="600">55.90</text>
-      <text x="420" y="133" font-size="10" fill="var(--green)" text-anchor="middle" font-weight="600">55.20</text>
-      <text x="520" y="105" font-size="10" fill="var(--green)" text-anchor="middle" font-weight="600">55.20</text>
-      <text x="580" y="96" font-size="10" fill="var(--green)" text-anchor="middle" font-weight="600">55.15</text>
-      <text x="640" y="64" font-size="10" fill="var(--red)" text-anchor="middle" font-weight="600">55.55</text>
-      <text x="280" y="152" font-size="10" fill="var(--text-secondary)" text-anchor="middle">5/15</text>
-      <text x="420" y="152" font-size="10" fill="var(--text-secondary)" text-anchor="middle">5/19</text>
-      <text x="520" y="152" font-size="10" fill="var(--text-secondary)" text-anchor="middle">5/21</text>
-      <text x="580" y="152" font-size="10" fill="var(--text-secondary)" text-anchor="middle">5/22</text>
-      <text x="640" y="152" font-size="10" fill="var(--text-secondary)" text-anchor="middle">5/25</text>
-      <!-- Change annotation -->
-      <text x="350" y="70" font-size="10" fill="var(--green)" text-anchor="middle" font-weight="500">-0.70kg / 4天</text>
-      <text x="470" y="105" font-size="9" fill="var(--green)" text-anchor="middle" font-weight="400">维持 / 2天</text>
-      <text x="550" y="105" font-size="9" fill="var(--green)" text-anchor="middle" font-weight="500">-0.05kg</text>
-      <text x="610" y="95" font-size="9" fill="var(--red)" text-anchor="middle" font-weight="500">↑0.40kg</text>
+      <text x="120" y="58" font-size="10" fill="var(--accent)" text-anchor="middle" font-weight="600">55.90</text>
+      <text x="224" y="140" font-size="10" fill="var(--green)" text-anchor="middle" font-weight="600">55.20</text>
+      <text x="328" y="114" font-size="10" fill="var(--green)" text-anchor="middle" font-weight="600">55.20</text>
+      <text x="432" y="118" font-size="10" fill="var(--green)" text-anchor="middle" font-weight="600">55.15</text>
+      <text x="536" y="86" font-size="10" fill="var(--orange)" text-anchor="middle" font-weight="600">55.55</text>
+      <text x="640" y="42" font-size="10" fill="var(--red)" text-anchor="middle" font-weight="600">56.10</text>
+      <!-- X axis labels -->
+      <text x="120" y="155" font-size="10" fill="var(--text-secondary)" text-anchor="middle">5/15</text>
+      <text x="224" y="155" font-size="10" fill="var(--text-secondary)" text-anchor="middle">5/19</text>
+      <text x="328" y="155" font-size="10" fill="var(--text-secondary)" text-anchor="middle">5/21</text>
+      <text x="432" y="155" font-size="10" fill="var(--text-secondary)" text-anchor="middle">5/22</text>
+      <text x="536" y="155" font-size="10" fill="var(--text-secondary)" text-anchor="middle">5/25</text>
+      <text x="640" y="155" font-size="10" fill="var(--text-secondary)" text-anchor="middle">5/26</text>
+      <!-- Change annotations -->
+      <text x="172" y="88" font-size="9" fill="var(--green)" text-anchor="middle" font-weight="500">-0.70kg / 4天</text>
+      <text x="276" y="113" font-size="9" fill="var(--green)" text-anchor="middle" font-weight="400">维持 / 2天</text>
+      <text x="380" y="115" font-size="9" fill="var(--green)" text-anchor="middle" font-weight="500">-0.05kg</text>
+      <text x="488" y="84" font-size="9" fill="var(--orange)" text-anchor="middle" font-weight="500">↑0.40kg</text>
+      <text x="588" y="65" font-size="9" fill="var(--red)" text-anchor="middle" font-weight="500">↑0.55kg</text>
     </svg>
   </div>
   <div style="margin-top:8px;font-size:11px;color:var(--text-secondary);display:flex;gap:16px;flex-wrap:wrap;">
     <span>📅 开始记录：2026-05-15</span>
-    <span>⚖️ 最新：55.55kg（↑0.40kg，总↓0.35kg / 10天）</span>
+    <span>⚖️ 最新：56.10kg（↑0.55kg，总↑0.20kg / 11天）</span>
     <span>🎯 起始：55.90kg</span>
   </div>
 </div>
