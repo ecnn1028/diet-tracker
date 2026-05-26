@@ -421,6 +421,7 @@
     <button class="quick-btn" onclick="goToDate('2026-05-23')">5/23 周六</button>
     <button class="quick-btn" onclick="goToDate('2026-05-24')">5/24 周日</button>
     <button class="quick-btn" onclick="goToDate('2026-05-25')">5/25 周一</button>
+    <button class="quick-btn" onclick="goToDate('2026-05-26')">5/26 周二</button>
     <button class="quick-btn" onclick="goToToday()">今天</button>
   </div>
 </div>
@@ -1354,13 +1355,50 @@
     </div>
   </div>
 
+  <!-- 2026-05-26 -->
+  <div class="day-card active" data-date="2026-05-26">
+    <div class="day-header">
+      <span class="day-title">5月26日 周二</span>
+      <div class="day-summary">
+        <span class="badge badge-orange">记录中</span>
+      </div>
+    </div>
+
+    <div class="meal-section">
+      <div class="meal-title">早餐</div>
+      <table><tr><th>食物</th><th>分量</th><th>蛋白(g)</th><th>热量</th></tr>
+        <tr><td>无糖酸奶(3.0g蛋白)</td><td>150g</td><td>4.5</td><td>90</td></tr>
+        <tr><td>4.0蛋白牛奶</td><td>50ml</td><td>2.0</td><td>33</td></tr>
+      </table>
+      <div class="subtotal">小计：蛋白质 6.5g · 热量 123kcal</div>
+    </div>
+
+    <div class="meal-section">
+      <div class="meal-title">午餐</div>
+      <table><tr><th>食物</th><th>分量</th><th>蛋白(g)</th><th>热量</th></tr>
+        <tr><td>卤蛋</td><td>2个</td><td>12.0</td><td>140</td></tr>
+        <tr><td>秦哥哥·黑松露鸡枞菌拌面</td><td>1份</td><td>12.0</td><td>550</td></tr>
+      </table>
+      <div class="subtotal">小计：蛋白质 24g · 热量 690kcal</div>
+    </div>
+
+    <div class="day-total">
+      <div class="total-row"><span class="total-label">已记录蛋白质</span><span class="total-value" style="color:var(--orange);">30.5g / 66g（46%，待续）</span></div>
+      <div class="total-row"><span class="total-label">已记录热量</span><span class="total-value" style="color:var(--orange);">813kcal / 1500-1700（待续）</span></div>
+      <div class="analysis">
+        <span class="dot dot-orange"></span>还需约35.5g蛋白 / 687-887kcal
+      </div>
+    </div>
+  </div>
+
   <!-- 2026-05-25 -->
-  <div class="day-card active" data-date="2026-05-25">
+  <div class="day-card" data-date="2026-05-25">
     <div class="day-header">
       <span class="day-title">5月25日 周一</span>
       <div class="day-summary">
         <span class="badge badge-purple">⚖️ 55.55kg</span>
-        <span class="badge badge-orange">记录中</span>
+        <span class="badge badge-green">蛋白质 达标</span>
+        <span class="badge badge-orange">热量 略低</span>
       </div>
     </div>
 
@@ -1389,12 +1427,24 @@
       <div class="subtotal">小计：蛋白质 2g · 热量 180kcal</div>
     </div>
 
+    <div class="meal-section">
+      <div class="meal-title">晚餐</div>
+      <table><tr><th>食物</th><th>分量</th><th>蛋白(g)</th><th>热量</th></tr>
+        <tr><td>烫吊龙（生重120g×3/4）</td><td>~90g</td><td>20.0</td><td>116</td></tr>
+        <tr><td>煎蛋（3个×3/4）</td><td>~2.25个</td><td>10.0</td><td>128</td></tr>
+        <tr><td>米粉（生重150g×3/4）</td><td>~112g</td><td>8.0</td><td>263</td></tr>
+        <tr><td>蒜酥油</td><td>一勺</td><td>0</td><td>45</td></tr>
+      </table>
+      <div class="subtotal">小计：蛋白质 38g · 热量 552kcal（实际吃3/4）</div>
+    </div>
+
     <div class="day-total">
-      <div class="total-row"><span class="total-label">已记录蛋白质</span><span class="total-value" style="color:var(--orange);">31.0g / 66g（47%，待续）</span></div>
-      <div class="total-row"><span class="total-label">已记录热量</span><span class="total-value" style="color:var(--orange);">753kcal / 1500-1700（待续）</span></div>
+      <div class="total-row"><span class="total-label">总蛋白质</span><span class="total-value" style="color:var(--green);">69.0g / 66g（达标 105%）</span></div>
+      <div class="total-row"><span class="total-label">总热量</span><span class="total-value" style="color:var(--orange);">1305kcal / 1500-1700（略低，可）</span></div>
       <div class="analysis">
-        <span class="dot dot-orange"></span>体重回升0.40kg，周末的影响来了<br>
-        <span class="dot dot-orange"></span>还需约35g蛋白 / 747-947kcal
+        <span class="dot dot-green"></span>蛋白质达标，力量训练日营养充足<br>
+        <span class="dot dot-orange"></span>热量偏低195kcal，训练后可加一杯牛奶收尾<br>
+        <span class="dot dot-red"></span>米粉夹生，做失败了😅 下次多泡久一点
       </div>
     </div>
   </div>
@@ -1586,7 +1636,8 @@
       <tr style="background:rgba(0,113,227,0.04);"><td><strong>5/22 周五</strong></td><td><strong style="color:var(--accent);">55.15kg</strong></td><td><strong>50.0g+</strong></td><td><span class="badge badge-orange">记录中</span></td><td><strong>636+</strong></td><td><span class="badge badge-orange">记录中</span></td></tr>
       <tr style="background:rgba(255,59,48,0.04);"><td><strong>5/23 周六</strong></td><td>—</td><td><strong>95.5g</strong></td><td><span class="badge badge-red">145%</span></td><td><strong>1440</strong></td><td><span class="badge badge-orange">略低</span></td></tr>
       <tr style="background:rgba(255,59,48,0.04);"><td><strong>5/24 周日</strong></td><td>—</td><td><strong>67.9g</strong></td><td><span class="badge badge-green">103%</span></td><td><strong>1604</strong></td><td><span class="badge badge-green">达标</span></td></tr>
-      <tr style="background:rgba(0,113,227,0.04);"><td><strong>5/25 周一</strong></td><td><strong style="color:var(--accent);">55.55kg</strong></td><td><strong>31.0g+</strong></td><td><span class="badge badge-orange">记录中</span></td><td><strong>753+</strong></td><td><span class="badge badge-orange">记录中</span></td></tr>
+      <tr style="background:rgba(0,113,227,0.04);"><td><strong>5/25 周一</strong></td><td><strong style="color:var(--accent);">55.55kg</strong></td><td><strong>69.0g</strong></td><td><span class="badge badge-green">蛋白质 达标</span></td><td><strong>1305kcal</strong></td><td><span class="badge badge-orange">热量 略低</span></td></tr>
+      <tr style="background:rgba(0,113,227,0.04);"><td><strong>5/26 周二</strong></td><td>—</td><td><strong>30.5g+</strong></td><td><span class="badge badge-orange">记录中</span></td><td><strong>813+</strong></td><td><span class="badge badge-orange">记录中</span></td></tr>
     </table>
   </div>
 </div>
@@ -1667,9 +1718,10 @@
     '2026-05-23': { title: '5月23日 周六', weekday: '2026年5月23日 · 周六' },
     '2026-05-24': { title: '5月24日 周日', weekday: '2026年5月24日 · 周日' },
     '2026-05-25': { title: '5月25日 周一', weekday: '2026年5月25日 · 周一' },
+    '2026-05-26': { title: '5月26日 周二', weekday: '2026年5月26日 · 周二' },
   };
 
-  let currentDate = '2026-05-25';
+  let currentDate = '2026-05-26';
 
   function goToDate(dateStr) {
     currentDate = dateStr;
@@ -1677,7 +1729,7 @@
   }
 
   function goToToday() {
-    goToDate('2026-05-25');
+    goToDate('2026-05-26');
   }
 
   function changeDate(delta) {
