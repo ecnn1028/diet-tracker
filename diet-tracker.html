@@ -417,11 +417,11 @@
     <button class="quick-btn" onclick="goToDate('2026-05-18')">5/18 周一</button>
     <button class="quick-btn" onclick="goToDate('2026-05-19')">5/19 周二</button>
     <button class="quick-btn" onclick="goToDate('2026-05-20')">5/20 周三</button>
-    <button class="quick-btn" onclick="goToDate('2026-05-22')">5/22 周五</button>
     <button class="quick-btn" onclick="goToDate('2026-05-23')">5/23 周六</button>
     <button class="quick-btn" onclick="goToDate('2026-05-24')">5/24 周日</button>
     <button class="quick-btn" onclick="goToDate('2026-05-25')">5/25 周一</button>
     <button class="quick-btn" onclick="goToDate('2026-05-26')">5/26 周二</button>
+    <button class="quick-btn" onclick="goToDate('2026-05-27')">5/27 周三</button>
     <button class="quick-btn" onclick="goToToday()">今天</button>
   </div>
 </div>
@@ -1361,7 +1361,8 @@
       <span class="day-title">5月26日 周二</span>
       <div class="day-summary">
         <span class="badge badge-purple">⚖️ 56.10kg</span>
-        <span class="badge badge-orange">记录中</span>
+        <span class="badge badge-green">蛋白质 达标</span>
+        <span class="badge badge-orange">热量 略超</span>
       </div>
     </div>
 
@@ -1383,11 +1384,49 @@
       <div class="subtotal">小计：蛋白质 24g · 热量 690kcal</div>
     </div>
 
+    <div class="meal-section">
+      <div class="meal-title">晚餐</div>
+      <table><tr><th>食物</th><th>分量</th><th>蛋白(g)</th><th>热量</th></tr>
+        <tr><td>螺蛳粉</td><td>1包</td><td>20</td><td>800</td></tr>
+        <tr><td>煎蛋</td><td>3个</td><td>18</td><td>240</td></tr>
+        <tr><td>上海青</td><td>1颗</td><td>1</td><td>15</td></tr>
+      </table>
+      <div class="subtotal">小计：蛋白质 39g · 热量 1055kcal</div>
+    </div>
+
     <div class="day-total">
-      <div class="total-row"><span class="total-label">已记录蛋白质</span><span class="total-value" style="color:var(--orange);">30.5g / 66g（46%，待续）</span></div>
-      <div class="total-row"><span class="total-label">已记录热量</span><span class="total-value" style="color:var(--orange);">813kcal / 1500-1700（待续）</span></div>
+      <div class="total-row"><span class="total-label">总蛋白质</span><span class="total-value" style="color:var(--green);">69.5g / 66g（达标 105%）</span></div>
+      <div class="total-row"><span class="total-label">总热量</span><span class="total-value" style="color:var(--orange);">1868kcal / 1500-1700（略超 +168）</span></div>
       <div class="analysis">
-        <span class="dot dot-orange"></span>还需约35.5g蛋白 / 687-887kcal
+        <span class="dot dot-green"></span>蛋白质达标，螺蛳粉+煎蛋蛋白管够<br>
+        <span class="dot dot-orange"></span>螺蛳粉热量偏高，一包就800kcal顶一顿了
+      </div>
+    </div>
+  </div>
+
+  <!-- 2026-05-27 -->
+  <div class="day-card active" data-date="2026-05-27">
+    <div class="day-header">
+      <span class="day-title">5月27日 周三</span>
+      <div class="day-summary">
+        <span class="badge badge-orange">记录中</span>
+      </div>
+    </div>
+
+    <div class="meal-section">
+      <div class="meal-title">早餐</div>
+      <table><tr><th>食物</th><th>分量</th><th>蛋白(g)</th><th>热量</th></tr>
+        <tr><td>马蹄糕</td><td>1份(~120g)</td><td>2.5</td><td>165</td></tr>
+        <tr><td>悦鲜活牛奶(3.6g蛋白)</td><td>半杯(~120ml)</td><td>4.3</td><td>78</td></tr>
+      </table>
+      <div class="subtotal">小计：蛋白质 6.8g · 热量 243kcal</div>
+    </div>
+
+    <div class="day-total">
+      <div class="total-row"><span class="total-label">已记录蛋白质</span><span class="total-value" style="color:var(--orange);">6.8g / 66g（10%，待续）</span></div>
+      <div class="total-row"><span class="total-label">已记录热量</span><span class="total-value" style="color:var(--orange);">243kcal / 1500-1700（待续）</span></div>
+      <div class="analysis">
+        <span class="dot dot-orange"></span>还需约59g蛋白 / 1257-1457kcal
       </div>
     </div>
   </div>
@@ -1647,7 +1686,8 @@
       <tr style="background:rgba(255,59,48,0.04);"><td><strong>5/23 周六</strong></td><td>—</td><td><strong>95.5g</strong></td><td><span class="badge badge-red">145%</span></td><td><strong>1440</strong></td><td><span class="badge badge-orange">略低</span></td></tr>
       <tr style="background:rgba(255,59,48,0.04);"><td><strong>5/24 周日</strong></td><td>—</td><td><strong>67.9g</strong></td><td><span class="badge badge-green">103%</span></td><td><strong>1604</strong></td><td><span class="badge badge-green">达标</span></td></tr>
       <tr style="background:rgba(0,113,227,0.04);"><td><strong>5/25 周一</strong></td><td><strong style="color:var(--accent);">55.55kg</strong></td><td><strong>70.9g</strong></td><td><span class="badge badge-green">蛋白质 达标</span></td><td><strong>1413kcal</strong></td><td><span class="badge badge-orange">热量 略低</span></td></tr>
-      <tr style="background:rgba(0,113,227,0.04);"><td><strong>5/26 周二</strong></td><td><strong style="color:var(--accent);">56.10kg</strong></td><td><strong>30.5g+</strong></td><td><span class="badge badge-orange">记录中</span></td><td><strong>813+</strong></td><td><span class="badge badge-orange">记录中</span></td></tr>
+      <tr style="background:rgba(0,113,227,0.04);"><td><strong>5/26 周二</strong></td><td><strong style="color:var(--accent);">56.10kg</strong></td><td><strong>69.5g</strong></td><td><span class="badge badge-green">蛋白质 达标</span></td><td><strong>1868kcal</strong></td><td><span class="badge badge-orange">热量 略超</span></td></tr>
+      <tr style="background:rgba(0,113,227,0.04);"><td><strong>5/27 周三</strong></td><td>—</td><td><strong>6.8g+</strong></td><td><span class="badge badge-orange">记录中</span></td><td><strong>243+</strong></td><td><span class="badge badge-orange">记录中</span></td></tr>
     </table>
   </div>
 </div>
@@ -1737,9 +1777,10 @@
     '2026-05-24': { title: '5月24日 周日', weekday: '2026年5月24日 · 周日' },
     '2026-05-25': { title: '5月25日 周一', weekday: '2026年5月25日 · 周一' },
     '2026-05-26': { title: '5月26日 周二', weekday: '2026年5月26日 · 周二' },
+    '2026-05-27': { title: '5月27日 周三', weekday: '2026年5月27日 · 周三' },
   };
 
-  let currentDate = '2026-05-26';
+  let currentDate = '2026-05-27';
 
   function goToDate(dateStr) {
     currentDate = dateStr;
@@ -1747,7 +1788,7 @@
   }
 
   function goToToday() {
-    goToDate('2026-05-26');
+    goToDate('2026-05-27');
   }
 
   function changeDate(delta) {
