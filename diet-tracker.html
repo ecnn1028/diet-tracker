@@ -417,11 +417,11 @@
     <button class="quick-btn" onclick="goToDate('2026-05-18')">5/18 周一</button>
     <button class="quick-btn" onclick="goToDate('2026-05-19')">5/19 周二</button>
     <button class="quick-btn" onclick="goToDate('2026-05-20')">5/20 周三</button>
-    <button class="quick-btn" onclick="goToDate('2026-05-23')">5/23 周六</button>
     <button class="quick-btn" onclick="goToDate('2026-05-24')">5/24 周日</button>
     <button class="quick-btn" onclick="goToDate('2026-05-25')">5/25 周一</button>
     <button class="quick-btn" onclick="goToDate('2026-05-26')">5/26 周二</button>
     <button class="quick-btn" onclick="goToDate('2026-05-27')">5/27 周三</button>
+    <button class="quick-btn" onclick="goToDate('2026-05-28')">5/28 周四</button>
     <button class="quick-btn" onclick="goToToday()">今天</button>
   </div>
 </div>
@@ -1410,7 +1410,8 @@
       <span class="day-title">5月27日 周三</span>
       <div class="day-summary">
         <span class="badge badge-purple">⚖️ 56.10kg</span>
-        <span class="badge badge-orange">记录中</span>
+        <span class="badge badge-green">蛋白质 达标</span>
+        <span class="badge badge-orange">热量 略超</span>
       </div>
     </div>
 
@@ -1432,11 +1433,81 @@
       <div class="subtotal">小计：蛋白质 12.6g · 热量 396kcal</div>
     </div>
 
+    <div class="meal-section">
+      <div class="meal-title">午餐</div>
+      <table><tr><th>食物</th><th>分量</th><th>蛋白(g)</th><th>热量</th></tr>
+        <tr><td>赛百味紫气小D春笋鸡腿排（6英寸不加酱）</td><td>1份</td><td>28.0</td><td>380</td></tr>
+      </table>
+      <div class="subtotal">小计：蛋白质 28g · 热量 380kcal</div>
+    </div>
+
+    <div class="meal-section">
+      <div class="meal-title">晚餐</div>
+      <table><tr><th>食物</th><th>分量</th><th>蛋白(g)</th><th>热量</th></tr>
+        <tr><td>秦哥哥·黑松露鸡枞菌拌面</td><td>1份</td><td>12.0</td><td>550</td></tr>
+        <tr><td>卤蛋</td><td>1个</td><td>6.0</td><td>70</td></tr>
+      </table>
+      <div class="subtotal">小计：蛋白质 18g · 热量 620kcal</div>
+    </div>
+
+    <div class="meal-section">
+      <div class="meal-title">夜宵</div>
+      <table><tr><th>食物</th><th>分量</th><th>蛋白(g)</th><th>热量</th></tr>
+        <tr><td>金枪鱼黄油芥末饼干（山姆）</td><td>1包(21g)</td><td>1.9</td><td>108</td></tr>
+      </table>
+      <div class="subtotal">小计：蛋白质 1.9g · 热量 108kcal</div>
+    </div>
+
     <div class="day-total">
-      <div class="total-row"><span class="total-label">已记录蛋白质</span><span class="total-value" style="color:var(--orange);">19.4g / 66g（29%，待续）</span></div>
-      <div class="total-row"><span class="total-label">已记录热量</span><span class="total-value" style="color:var(--orange);">639kcal / 1500-1700（待续）</span></div>
+      <div class="total-row"><span class="total-label">总蛋白质</span><span class="total-value" style="color:var(--green);">67.3g / 66g（达标 102%）</span></div>
+      <div class="total-row"><span class="total-label">总热量</span><span class="total-value" style="color:var(--orange);">1747kcal / 1500-1700（略超 +47）</span></div>
       <div class="analysis">
-        <span class="dot dot-orange"></span>还需约46.6g蛋白 / 861-1061kcal
+        <span class="dot dot-green"></span>蛋白质达标<br>
+        <span class="dot dot-orange"></span>热量略超47kcal，在可接受范围
+      </div>
+    </div>
+  </div>
+
+  <!-- 2026-05-28 -->
+  <div class="day-card active" data-date="2026-05-28">
+    <div class="day-header">
+      <span class="day-title">5月28日 周四</span>
+      <div class="day-summary">
+        <span class="badge badge-orange">记录中</span>
+      </div>
+    </div>
+
+    <div class="meal-section">
+      <div class="meal-title">早餐</div>
+      <table><tr><th>食物</th><th>分量</th><th>蛋白(g)</th><th>热量</th></tr>
+        <tr><td>无糖酸奶(3.0g蛋白)</td><td>150g</td><td>4.5</td><td>90</td></tr>
+        <tr><td>4.0蛋白牛奶</td><td>80ml</td><td>3.2</td><td>52</td></tr>
+      </table>
+      <div class="subtotal">小计：蛋白质 7.7g · 热量 142kcal</div>
+    </div>
+
+    <div class="meal-section">
+      <div class="meal-title">午餐</div>
+      <table><tr><th>食物</th><th>分量</th><th>蛋白(g)</th><th>热量</th></tr>
+        <tr><td>赛百味照烧鸡百味卷（不加酱）</td><td>1份</td><td>25.0</td><td>360</td></tr>
+      </table>
+      <div class="subtotal">小计：蛋白质 25g · 热量 360kcal</div>
+    </div>
+
+    <div class="meal-section">
+      <div class="meal-title">下午茶</div>
+      <table><tr><th>食物</th><th>分量</th><th>蛋白(g)</th><th>热量</th></tr>
+        <tr><td>伊利苦咖啡味雪糕</td><td>1支</td><td>2.0</td><td>100</td></tr>
+        <tr><td>风行乐悠风味发酵乳(2.9g蛋白/100g)</td><td>400g</td><td>11.6</td><td>300</td></tr>
+      </table>
+      <div class="subtotal">小计：蛋白质 13.6g · 热量 400kcal</div>
+    </div>
+
+    <div class="day-total">
+      <div class="total-row"><span class="total-label">已记录蛋白质</span><span class="total-value" style="color:var(--orange);">46.3g / 66g（70%，待续）</span></div>
+      <div class="total-row"><span class="total-label">已记录热量</span><span class="total-value" style="color:var(--orange);">902kcal / 1500-1700（待续）</span></div>
+      <div class="analysis">
+        <span class="dot dot-orange"></span>还需约19.7g蛋白 / 598-798kcal
       </div>
     </div>
   </div>
@@ -1697,7 +1768,8 @@
       <tr style="background:rgba(255,59,48,0.04);"><td><strong>5/24 周日</strong></td><td>—</td><td><strong>67.9g</strong></td><td><span class="badge badge-green">103%</span></td><td><strong>1604</strong></td><td><span class="badge badge-green">达标</span></td></tr>
       <tr style="background:rgba(0,113,227,0.04);"><td><strong>5/25 周一</strong></td><td><strong style="color:var(--accent);">55.55kg</strong></td><td><strong>70.9g</strong></td><td><span class="badge badge-green">蛋白质 达标</span></td><td><strong>1413kcal</strong></td><td><span class="badge badge-orange">热量 略低</span></td></tr>
       <tr style="background:rgba(0,113,227,0.04);"><td><strong>5/26 周二</strong></td><td><strong style="color:var(--accent);">56.10kg</strong></td><td><strong>69.5g</strong></td><td><span class="badge badge-green">蛋白质 达标</span></td><td><strong>1868kcal</strong></td><td><span class="badge badge-orange">热量 略超</span></td></tr>
-      <tr style="background:rgba(0,113,227,0.04);"><td><strong>5/27 周三</strong></td><td><strong style="color:var(--accent);">56.10kg</strong></td><td><strong>19.4g+</strong></td><td><span class="badge badge-orange">记录中</span></td><td><strong>639+</strong></td><td><span class="badge badge-orange">记录中</span></td></tr>
+      <tr style="background:rgba(0,113,227,0.04);"><td><strong>5/27 周三</strong></td><td><strong style="color:var(--accent);">56.10kg</strong></td><td><strong>67.3g</strong></td><td><span class="badge badge-green">蛋白质 达标</span></td><td><strong>1747kcal</strong></td><td><span class="badge badge-orange">热量 略超</span></td></tr>
+      <tr style="background:rgba(0,113,227,0.04);"><td><strong>5/28 周四</strong></td><td>—</td><td><strong>46.3g+</strong></td><td><span class="badge badge-orange">记录中</span></td><td><strong>902+</strong></td><td><span class="badge badge-orange">记录中</span></td></tr>
     </table>
   </div>
 </div>
@@ -1788,9 +1860,10 @@
     '2026-05-25': { title: '5月25日 周一', weekday: '2026年5月25日 · 周一' },
     '2026-05-26': { title: '5月26日 周二', weekday: '2026年5月26日 · 周二' },
     '2026-05-27': { title: '5月27日 周三', weekday: '2026年5月27日 · 周三' },
+    '2026-05-28': { title: '5月28日 周四', weekday: '2026年5月28日 · 周四' },
   };
 
-  let currentDate = '2026-05-27';
+  let currentDate = '2026-05-28';
 
   function goToDate(dateStr) {
     currentDate = dateStr;
@@ -1798,7 +1871,7 @@
   }
 
   function goToToday() {
-    goToDate('2026-05-27');
+    goToDate('2026-05-28');
   }
 
   function changeDate(delta) {
